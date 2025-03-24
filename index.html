@@ -855,7 +855,8 @@ function showPopup() {
   const total = qty * starPrice;
   const message = `🚀 Order Telegram Stars\n👤 Username: ${username}\n⭐ Jumlah: ${qty}\n💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
   popupMessage.textContent = message;
-  popup.classList.add('show');
+  document.getElementById('popupOverlay').classList.add('show');
+
 
  confirmButton.onclick = () => {
   const encoded = encodeURIComponent(message);
