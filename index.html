@@ -858,7 +858,7 @@ function showPopup() {
   document.getElementById('popupOverlay').classList.add('show');
 
 
- confirmButton.onclick = () => {
+confirmButton.onclick = () => {
   const encoded = encodeURIComponent(message);
 
   // ✅ Play confirmation sound
@@ -866,21 +866,26 @@ function showPopup() {
 
   // ✅ Show toast
   const toast = document.getElementById("toast");
+  toast.textContent = "✅ Pesanan dikirim ke admin!";
   toast.style.opacity = 1;
   toast.style.transform = "translateY(0)";
   toast.style.pointerEvents = "auto";
 
+  // ✅ Immediately open Telegram (user-initiated action)
   setTimeout(() => {
+    window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+  }, 1000);
+
+  // ✅ Auto-close popup and toast
+  setTimeout(() => {
+    document.getElementById("popupOverlay").classList.remove("show");
+
     toast.style.opacity = 0;
     toast.style.transform = "translateY(20px)";
     toast.style.pointerEvents = "none";
-  }, 3000);
-
-  setTimeout(() => {
-  window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-}, 2000); // ⏳ Wait 2 seconds so the sound finishes
-
+  }, 3500);
 };
+
 
 
 }
