@@ -1020,6 +1020,28 @@ function closePopup() {
       link.classList.add('active');
     }
   });
+
+   let lastScrollY = window.scrollY;
+const nav = document.getElementById("floatingNav");
+
+// 👇 Show/hide nav on scroll direction
+window.addEventListener("scroll", () => {
+  if (window.scrollY > lastScrollY) {
+    nav.classList.add("hidden"); // hide on scroll down
+  } else {
+    nav.classList.remove("hidden"); // show on scroll up
+  }
+  lastScrollY = window.scrollY;
+});
+
+// 🧭 Highlight active nav tab
+const path = window.location.pathname;
+document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
+  if (path.includes(link.getAttribute("href"))) {
+    link.classList.add("active");
+  }
+});
+
 </script>
 
    
