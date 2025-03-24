@@ -438,6 +438,36 @@
   }
 }
 
+   .nav-pill-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.nav-pill {
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 9999px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: 0.2s ease;
+}
+
+.nav-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+}
+
+.nav-pill.active {
+  background: #1e293b;
+  border: 1px solid #38bdf8;
+  color: #e2e8f0;
+}
+
     
   </style>
 </head>
@@ -446,12 +476,13 @@
 <div class="container">
 
 <!-- 🧭 Top Navigation -->
-<nav class="top-nav">
-  <a href="stars.html" class="active" >Stars</a>
-  <a href="premium.html">Premium</a>
-  <a href="apps.html">Apps</a>
-  <a href="careers.html">Careers</a>
+<nav class="nav-pill-group">
+  <a href="stars.html" class="nav-pill active">Stars</a>
+  <a href="premium.html" class="nav-pill">Premium</a>
+  <a href="apps.html" class="nav-pill">Apps</a>
+  <a href="careers.html" class="nav-pill">Careers</a>
 </nav>
+
 
 
 <h1 class="page-title"> Beli Telegram Stars   
