@@ -1012,14 +1012,13 @@ function closePopup() {
 </img></a>
 
 <script>
-  const path = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav-pill');
+  const currentPath = window.location.pathname;
+document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
+  if (currentPath.includes(link.getAttribute("href"))) {
+    link.classList.add("active");
+  }
+});
 
-  navLinks.forEach(link => {
-    if (path.includes(link.getAttribute('href'))) {
-      link.classList.add('active');
-    }
-  });
 
    let lastScrollY = window.scrollY;
 const nav = document.getElementById("floatingNav");
