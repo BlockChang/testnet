@@ -414,11 +414,20 @@
   color: white;
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
+.info-section-title {
+  text-align: center;
+  color: #f1f5f9;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
 .info-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
 }
 
 .info-card {
@@ -434,6 +443,7 @@
   justify-content: space-between;
   min-height: 160px;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .info-card:hover {
@@ -441,43 +451,43 @@
   box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
 }
 
-
-.info-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: #f8fafc;
-}
-
-.info-desc {
-  font-size: 0.88rem;
-  color: #cbd5e1;
-  line-height: 1.5;
-}
-
-   .info-icon {
+.info-icon {
   font-size: 1.5rem;
   margin-bottom: 0.6rem;
   color: #38bdf8;
 }
 
+.info-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
 
-/* Themed Colors */
+.info-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* Optional themed backgrounds */
 .info-card.blue {
   background: radial-gradient(circle at top left, #0f172a, #1e2536);
 }
-
 .info-card.purple {
   background: radial-gradient(circle at top left, #3b0764, #1e2536);
 }
-
 .info-card.green {
   background: radial-gradient(circle at top left, #065f46, #1e2536);
 }
-
 .info-card.pink {
   background: radial-gradient(circle at top left, #831843, #1e2536);
 }
+
 
 @media (max-width: 500px) {
   .info-grid {
