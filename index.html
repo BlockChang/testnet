@@ -559,7 +559,7 @@
   font-weight: 600;
 }
 
-   /* 🌊 Floating Navigation Styles */
+   /* 🌊 Floating Navigation with Scrollable Items */
 .floating-nav {
   position: fixed;
   top: 0;
@@ -567,21 +567,51 @@
   right: 0;
   z-index: 999;
   display: flex;
-  justify-content: center;
-  gap: 0.6rem;
+  align-items: center;
   padding: 0.75rem 1rem;
   background: rgba(13, 17, 28, 0.9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.05);
   transform: translateY(0);
   transition: transform 0.3s ease;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 1rem;
 }
 
 .floating-nav.hidden {
   transform: translateY(-100%);
 }
 
-.floating-nav .nav-pill {
+/* Logo stays pinned left */
+.nav-logo {
+  flex: 0 0 auto;
+  margin-right: 0.75rem;
+}
+
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* Scrollable nav group */
+.nav-scroll {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pills */
+.nav-scroll .nav-pill {
+  flex: 0 0 auto;
   padding: 0.5rem 1.2rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 9999px;
@@ -590,18 +620,20 @@
   font-weight: 500;
   font-size: 0.85rem;
   transition: 0.2s ease;
+  white-space: nowrap;
 }
 
-.floating-nav .nav-pill:hover {
+.nav-scroll .nav-pill:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #f8fafc;
 }
 
-.floating-nav .nav-pill.active {
+.nav-scroll .nav-pill.active {
   background: #38bdf8;
   color: #0f172a;
   font-weight: 600;
 }
+
 
     
   </style>
