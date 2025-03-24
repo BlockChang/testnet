@@ -559,6 +559,50 @@
   font-weight: 600;
 }
 
+   /* 🌊 Floating Navigation Styles */
+.floating-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: rgba(13, 17, 28, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.floating-nav.hidden {
+  transform: translateY(-100%);
+}
+
+.floating-nav .nav-pill {
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: 0.2s ease;
+}
+
+.floating-nav .nav-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+.floating-nav .nav-pill.active {
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+}
+
     
   </style>
 </head>
