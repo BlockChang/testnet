@@ -881,5 +881,18 @@ function closePopup() {
 <a aria-label="Telegram" class="floating-telegram" href="https://t.me/annadelveyy" target="_blank">
 <img alt="Telegram" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
 </img></a>
+
+<script>
+  const path = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-pill');
+
+  navLinks.forEach(link => {
+    if (path.includes(link.getAttribute('href'))) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+   
 </body>
 </html>
