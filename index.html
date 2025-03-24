@@ -382,6 +382,51 @@
   color: white;
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.info-card {
+  padding: 1.2rem;
+  border-radius: 16px;
+  cursor: pointer;
+  background: #1e2536;
+  color: #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+
+.info-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+.info-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.info-desc {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+/* Themed Colors */
+.info-card.blue { background: #15263f; }
+.info-card.purple { background: #301c4b; }
+.info-card.green { background: #173a3c; }
+.info-card.pink { background: #3b1e2e; }
+
+@media (max-width: 500px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
     
   </style>
