@@ -1020,18 +1020,21 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
 });
 
 
-   let lastScrollY = window.scrollY;
+   let lastScrollTop = 0;
 const nav = document.getElementById("floatingNav");
 
-// 👇 Show/hide nav on scroll direction
 window.addEventListener("scroll", () => {
-  if (window.scrollY > lastScrollY) {
-    nav.classList.add("hidden"); // hide on scroll down
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    nav.classList.add("hidden"); // scrolling down
   } else {
-    nav.classList.remove("hidden"); // show on scroll up
+    nav.classList.remove("hidden"); // scrolling up
   }
-  lastScrollY = window.scrollY;
-});
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, false);
+
 
 // 🧭 Highlight active nav tab
 const path = window.location.pathname;
