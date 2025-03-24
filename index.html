@@ -521,39 +521,20 @@
 <div class="toggle-packages" id="toggleBtn" onclick="togglePackageView()">Tampilkan lebih banyak paket ⬇️</div>
 <a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
 <!-- ✅ START OF POPUP INSERT -->
-<div class="popup" id="popup">
-<p style="margin-bottom: 1rem; font-weight: 600; font-size: 1rem; color: #f8fafc;">📋 <span style="border-bottom: 2px solid #38bdf8;">Konfirmasi Pesanan</span></p>
-<pre id="popupMessage" style="
-  white-space: pre-wrap;
-  background: #1e2536;
-  padding: 1.5rem;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  color: #e2e8f0;
-  line-height: 1.6;
-  font-family: 'Inter', sans-serif;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.05);
-"></pre>
+<!-- 🆕 MODERN POPUP MODAL -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
+  <div class="popup-card" onclick="event.stopPropagation();">
+    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
+      📋 Konfirmasi Pesanan
+    </h3>
+    <pre id="popupMessage" class="popup-message"></pre>
+    <div class="popup-actions">
+      <button onclick="closePopup()" class="popup-cancel">❌ Batal</button>
+      <button id="confirmButton" class="popup-confirm">✅ Konfirmasi</button>
+    </div>
+  </div>
+</div>
 
-<button id="confirmButton" style="
-  margin-top: 1rem;
-  background: linear-gradient(to right, #38bdf8, #0ea5e9);
-  border: none;
-  padding: 0.9rem 1.8rem;
-  border-radius: 12px;
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.95rem;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
-  transition: all 0.3s ease;
-"
->✅ Konfirmasi &amp; Kirim ke Admin</button>
-<div style="margin-top: 0.8rem;">
-<a href="#" onclick="closePopup()" style="color:#f87171; font-size: 0.85rem; text-decoration: underline;">Batal</a>
-</div>
-</div>
 <!-- ✅ END OF POPUP INSERT -->
 </div> <!-- -->
 
