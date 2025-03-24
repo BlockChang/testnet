@@ -1094,6 +1094,23 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const title = "Beli Telegram Stars";
+  const target = document.getElementById("typedTitle");
+  let i = 0;
+
+  function typeChar() {
+    if (i < title.length) {
+      target.textContent += title.charAt(i);
+      i++;
+      setTimeout(typeChar, 80); // adjust speed here
+    }
+  }
+
+  typeChar();
+});
+
+   
 </script>
 
    
