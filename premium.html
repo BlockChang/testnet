@@ -913,10 +913,11 @@ const message = [
   "🚀 Order Telegram Premium",
   `👤 Username: ${username}`,
   `🕐 Durasi: ${duration} Bulan`,
-  `💰 Harga: Rp${total.toLocaleString('id-ID')}`
-].join('%0A'); // %0A = newline in URL
+  `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`
+].join('\n'); // ← Real newlines!
 
 const encoded = encodeURIComponent(message);
+
 
   orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
 
