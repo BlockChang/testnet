@@ -357,7 +357,7 @@
   .package-option {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start; /* 🧠 important fix */
   background: #2c2f3f;
   padding: 1rem;
   border-radius: 10px;
@@ -365,6 +365,7 @@
   transition: 0.2s;
   cursor: pointer;
 }
+
 
 .option-left {
   display: flex;
