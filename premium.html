@@ -909,8 +909,15 @@ function updatePreview(username) {
 function updateLink(username, duration) {
   if (!username || !duration) return;
   const total = priceMap[duration];
-  const msg = `🚀 Order Telegram Premium\\n👤 Username: ${username}\\n🕐 Durasi: ${duration} Bulan\\n💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`;
-  const encoded = encodeURIComponent(msg);
+const message = [
+  "🚀 Order Telegram Premium",
+  `👤 Username: ${username}`,
+  `🕐 Durasi: ${duration} Bulan`,
+  `💰 Harga: Rp${total.toLocaleString('id-ID')}`
+].join('%0A'); // %0A = newline in URL
+
+const encoded = encodeURIComponent(message);
+
   orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
 
   confirmButton.onclick = () => {
