@@ -760,87 +760,20 @@
   </style>
 </head>
 <body>
-
-
-  <!-- 🧭 Floating Nav Bar -->
-  <nav class="floating-nav" id="floatingNav">
-    <div class="nav-logo">TeleBank.</div>
-    <div class="nav-scroll">
-      <a href="index.html" class="nav-pill">Stars</a>
-      <a href="premium.html" class="nav-pill">Premium</a>
-      <a href="apps.html" class="nav-pill">Apps</a>
-      <a href="ghostwriting.html" class="nav-pill">Joki Tugas</a>
-    </div>
-  </nav>
-
-
+<!-- 🧭 Floating Nav Bar -->
+<nav class="floating-nav" id="floatingNav">
+<div class="nav-logo">TeleBank.</div>
+<div class="nav-scroll">
+<a class="nav-pill" href="index.html">Stars</a>
+<a class="nav-pill" href="premium.html">Premium</a>
+<a class="nav-pill" href="apps.html">Apps</a>
+<a class="nav-pill" href="ghostwriting.html">Joki Tugas</a>
+</div>
+</nav>
 <h1 class="main-page-title" id="typedTitle"></h1>
-
-   
 <div id="particles-js"></div>
-<div class="container">
-
-<label for="nama">Nama</label>
-<input type="text" id="nama" placeholder="contoh: Annadelvey">
-
-<label for="wa">WhatsApp</label>
-<input type="text" id="wa" placeholder="contoh: 08123456789">
-
-<label for="jenjang">Jenjang Pendidikan</label>
-<select id="jenjang">
-  <option value="">Pilih jenjang</option>
-  <option value="SD">SD</option>
-  <option value="SMP">SMP</option>
-  <option value="SMA">SMA</option>
-  <option value="S1">S1</option>
-  <option value="S2">S2</option>
-  <option value="S3">S3</option>
-</select>
-
-<label for="deadline">Deadline</label>
-<input type="datetime-local" id="deadline">
-
-<label for="deskripsi">Deskripsi Tugas</label>
-<textarea id="deskripsi" rows="6" placeholder="Contoh: Essay 4 halaman, tema teknologi, Format .docx, 1.5 spasi."></textarea>
-
-<label for="catatan">Catatan Tambahan (opsional)</label>
-<textarea id="catatan" rows="3" placeholder="Boleh tulis permintaan khusus seperti urgent, bahasa asing, dll."></textarea>
-
-<a class="buy-button" onclick="generateMessage()">Preview & Order via Telegram</a>
-
-
-<div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
-  <div class="popup-card" onclick="event.stopPropagation();">
-    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
-      Konfirmasi Pesanan
-    </h3>
-    <div id="popupMessage" class="popup-message" style="background:#1e1f25;padding:1rem;border-radius:8px;margin-bottom:1rem;"></div>
-
-    <div class="popup-actions">
-      <button onclick="closePopup()" class="popup-cancel">Batal</button>
-      <button id="confirmButton" class="popup-confirm">Konfirmasi</button>
-    </div>
-  </div>
-</div>
-
-
-  <div class="popup-card" onclick="event.stopPropagation();">
-    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
-      Konfirmasi Pesanan
-    </h3>
-    <div id="popupMessage" class="order-summary-card"></div>
-
-    <div class="popup-actions">
-      <button onclick="closePopup()" class="popup-cancel">Batal</button>
-      <button id="confirmButton" class="popup-confirm">Konfirmasi</button>
-    </div>
-  </div>
-</div>
 
 <!-- ✅ END OF POPUP INSERT -->
-
-
-   
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
 particlesJS("particles-js", {
@@ -911,7 +844,6 @@ function closePopup() {
 
 
 </script>
-
 <div id="toast" style="
   position: fixed;
   bottom: 2rem;
@@ -932,48 +864,87 @@ function closePopup() {
 </div>
 <audio id="confirmSound" preload="auto" src="https://cdn.pixabay.com/audio/2022/03/15/audio_49f3a4a2f3.mp3"></audio>
 
-   
-</div>
-
-   <!-- 🌐 Info Island Grid Section -->
+<!-- 🌐 Info Island Grid Section -->
 <div class="info-section">
-  <h2 class="info-section-title">Kenali Teleswap Lebih Dekat</h2>
-  <div class="info-grid">
-    <a href="#" class="info-card blue">
-      <div class="info-icon">⭐</div>
-      <div class="info-title">Beli Telegram Stars</div>
-      <div class="info-desc">Isi ulang saldo Stars dengan harga terbaik untuk kamu & teman.</div>
-    </a>
-
-    <a href="https://t.me/yourchannel" class="info-card purple" target="_blank">
-      <div class="info-icon">💬</div>
-      <div class="info-title">Gabung Komunitas</div>
-      <div class="info-desc">Dapatkan update terbaru & promo khusus di channel Telegram kami.</div>
-    </a>
-
-    <a href="careers.html" class="info-card green">
-      <div class="info-icon">🧑‍💻</div>
-      <div class="info-title">Karier di Teleswap</div>
-      <div class="info-desc">Ikut bangun masa depan dengan tim kami. Lihat posisi yang tersedia.</div>
-    </a>
-
-    
-    <a href="reseller.html" class="info-card pink">
-      <div class="info-icon">📢</div>
-      <div class="info-title">Jadi Reseller</div>
-      <div class="info-desc">Dapatkan harga khusus dan jual kembali produk kami. Bergabunglah dengan TeleBand.</div>
-    </a>
-    
-  </div>
+<h2 class="info-section-title">Kenali Teleswap Lebih Dekat</h2>
+<div class="info-grid">
+<a class="info-card blue" href="#">
+<div class="info-icon">⭐</div>
+<div class="info-title">Beli Telegram Stars</div>
+<div class="info-desc">Isi ulang saldo Stars dengan harga terbaik untuk kamu &amp; teman.</div>
+</a>
+<a class="info-card purple" href="https://t.me/yourchannel" target="_blank">
+<div class="info-icon">💬</div>
+<div class="info-title">Gabung Komunitas</div>
+<div class="info-desc">Dapatkan update terbaru &amp; promo khusus di channel Telegram kami.</div>
+</a>
+<a class="info-card green" href="careers.html">
+<div class="info-icon">🧑‍💻</div>
+<div class="info-title">Karier di Teleswap</div>
+<div class="info-desc">Ikut bangun masa depan dengan tim kami. Lihat posisi yang tersedia.</div>
+</a>
+<a class="info-card pink" href="reseller.html">
+<div class="info-icon">📢</div>
+<div class="info-title">Jadi Reseller</div>
+<div class="info-desc">Dapatkan harga khusus dan jual kembali produk kami. Bergabunglah dengan TeleBand.</div>
+</a>
 </div>
-   
-   <footer class="footer">
+</div>
+
+<div class="container">
+<h2 id="typedTitle" style="text-align: center; margin-bottom: 2rem;"></h2>
+<label for="nama">Nama</label>
+<div class="input-icon-group">
+<input id="nama" placeholder="contoh: Annadelvey" type="text"/>
+</div>
+<label for="wa">WhatsApp</label>
+<div class="input-icon-group">
+<input id="wa" placeholder="contoh: 08123456789" type="text"/>
+</div>
+<label for="jenjang">Jenjang Pendidikan</label>
+<div class="input-icon-group">
+<select id="jenjang">
+<option value="">Pilih jenjang</option>
+<option value="SD">SD</option>
+<option value="SMP">SMP</option>
+<option value="SMA">SMA</option>
+<option value="S1">S1</option>
+<option value="S2">S2</option>
+<option value="S3">S3</option>
+</select>
+</div>
+<label for="deadline">Deadline</label>
+<div class="input-icon-group">
+<input id="deadline" type="datetime-local"/>
+</div>
+<label for="deskripsi">Deskripsi Tugas</label>
+<div class="input-icon-group">
+<textarea id="deskripsi" placeholder="Contoh: Essay 4 halaman, tema teknologi, Format .docx, 1.5 spasi." rows="5"></textarea>
+</div>
+<label for="catatan">Catatan Tambahan (opsional)</label>
+<div class="input-icon-group">
+<textarea id="catatan" placeholder="Boleh tulis permintaan khusus seperti urgent, bahasa asing, dll." rows="3"></textarea>
+</div>
+<a class="buy-button" onclick="generateMessage()">Preview &amp; Order via Telegram</a>
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
+<div class="popup-card" onclick="event.stopPropagation();">
+<h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
+        Konfirmasi Pesanan
+      </h3>
+<div class="popup-message" id="popupMessage" style="background:#1e1f25;padding:1rem;border-radius:8px;margin-bottom:1rem;"></div>
+<div class="popup-actions">
+<button class="popup-cancel" onclick="closePopup()">Batal</button>
+<button class="popup-confirm" id="confirmButton">Konfirmasi</button>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
 <p>© 2025 Teleswap Labs</p>
 </footer>
 <a aria-label="Telegram" class="floating-telegram" href="https://t.me/annadelveyy" target="_blank">
-<img alt="Telegram" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
-</img></a>
-
+<img alt="Telegram" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"/>
+</a>
 <script>
   const currentPath = window.location.pathname;
 document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
@@ -1012,6 +983,40 @@ document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
    
 </script>
 
-   
+<script>
+function generateMessage() {
+  const nama = document.getElementById("nama").value.trim();
+  const wa = document.getElementById("wa").value.trim();
+  const jenjang = document.getElementById("jenjang").value;
+  const deadline = document.getElementById("deadline").value;
+  const deskripsi = document.getElementById("deskripsi").value.trim();
+  const catatan = document.getElementById("catatan").value.trim();
+
+  if (!nama || !wa || !jenjang || !deadline || !deskripsi) {
+    alert("⚠️ Harap lengkapi semua data yang wajib diisi.");
+    return;
+  }
+
+  let msg = `🧾 Order Jasa Tugas\n`;
+  msg += `👤 Nama: ${nama}\n`;
+  msg += `📱 WhatsApp: ${wa}\n`;
+  msg += `🎓 Jenjang: ${jenjang}\n`;
+  msg += `⏳ Deadline: ${deadline}\n`;
+  msg += `📄 Deskripsi Tugas:\n${deskripsi}\n`;
+  if (catatan) msg += `📝 Catatan Tambahan:\n${catatan}`;
+
+  const encoded = encodeURIComponent(msg);
+  document.getElementById("popupMessage").innerText = msg;
+  document.getElementById("popupOverlay").classList.add("show");
+
+  document.getElementById("confirmButton").onclick = () => {
+    window.location.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
+  };
+}
+
+function closePopup() {
+  document.getElementById("popupOverlay").classList.remove("show");
+}
+</script>
 </body>
 </html>
