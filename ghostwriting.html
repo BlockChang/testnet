@@ -780,46 +780,48 @@
 <div id="particles-js"></div>
 <div class="container">
 
-<label for="username">Masukkan username Telegram</label>
-<div class="input-icon-group">
+<label for="nama">Nama</label>
+<input type="text" id="nama" placeholder="contoh: Annadelvey">
 
-<input id="username" placeholder="@username" type="text"/>
-<div id="usernameLength" style="font-size: 0.75rem; color: #aaa; margin-top: 0.2rem; text-align: right;">0/32</div>
-</div>
-<div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
-<div class="username-preview" id="previewLink"></div>
-<label for="premiumDuration">Pilih Durasi Langganan</label>
+<label for="wa">WhatsApp</label>
+<input type="text" id="wa" placeholder="contoh: 08123456789">
 
-<div class="package-option" onclick="selectPremium(3)">
-  <div class="option-left"><strong>3 Bulan</strong></div>
-  <div class="star-summary">Rp200.000</div>
-</div>
+<label for="jenjang">Jenjang Pendidikan</label>
+<select id="jenjang">
+  <option value="">Pilih jenjang</option>
+  <option value="SD">SD</option>
+  <option value="SMP">SMP</option>
+  <option value="SMA">SMA</option>
+  <option value="S1">S1</option>
+  <option value="S2">S2</option>
+  <option value="S3">S3</option>
+</select>
 
-<div class="package-option" onclick="selectPremium(6)">
-  <div class="option-left">
-    <strong>6 Bulan</strong>
-    <span class="badge">-30%</span>
-  </div>
-  <div class="option-right">Rp280.000</div>
-</div>
+<label for="deadline">Deadline</label>
+<input type="datetime-local" id="deadline">
 
+<label for="deskripsi">Deskripsi Tugas</label>
+<textarea id="deskripsi" rows="6" placeholder="Contoh: Essay 4 halaman, tema teknologi, Format .docx, 1.5 spasi."></textarea>
 
+<label for="catatan">Catatan Tambahan (opsional)</label>
+<textarea id="catatan" rows="3" placeholder="Boleh tulis permintaan khusus seperti urgent, bahasa asing, dll."></textarea>
 
-<div class="package-option" onclick="selectPremium(12)">
-  <div class="option-left">
-    <strong>1 Tahun</strong>
-    <span class="badge badge-best">🔥 Best Deal -37.5%</span>
+<button class="buy-button" onclick="generateMessage()">Preview & Order via Telegram</button>
 
-  </div>
-  <div class="option-right">Rp500.000</div>
-</div>
-
-
-
-<a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
-<!-- ✅ START OF POPUP INSERT -->
-<!-- 🆕 MODERN POPUP MODAL -->
 <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
+  <div class="popup-card" onclick="event.stopPropagation();">
+    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
+      Konfirmasi Pesanan
+    </h3>
+    <div id="popupMessage" class="popup-message"></div>
+
+    <div class="popup-actions">
+      <button onclick="closePopup()" class="popup-cancel">Batal</button>
+      <button id="confirmButton" class="popup-confirm">Konfirmasi</button>
+    </div>
+  </div>
+</div>
+
   <div class="popup-card" onclick="event.stopPropagation();">
     <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
       Konfirmasi Pesanan
@@ -858,7 +860,7 @@ particlesJS("particles-js", {
 
 // 🔤 Typing animation
 document.addEventListener("DOMContentLoaded", function () {
-  const title = "Beli Telegram Premium.";
+  const title = "Order Joki Tugas";
   const target = document.getElementById("typedTitle");
   let i = 0;
   function typeChar() {
@@ -871,116 +873,41 @@ document.addEventListener("DOMContentLoaded", function () {
   typeChar();
 });
 
-const priceMap = {
-  3: 200000,
-  6: 280000,
-  12: 500000,
-};
-let selectedDuration = null;
+   function generateMessage() {
+  const nama = document.getElementById("nama").value.trim();
+  const wa = document.getElementById("wa").value.trim();
+  const jenjang = document.getElementById("jenjang").value;
+  const deadline = document.getElementById("deadline").value;
+  const deskripsi = document.getElementById("deskripsi").value.trim();
+  const catatan = document.getElementById("catatan").value.trim();
 
-const usernameInput = document.getElementById("username");
-const orderButton = document.getElementById("orderButton");
-const confirmButton = document.getElementById("confirmButton");
-const popupOverlay = document.getElementById("popupOverlay");
-const popupMessage = document.getElementById("popupMessage");
-
-function selectPremium(months) {
-  selectedDuration = months;
-  document.querySelectorAll(".package-option").forEach(opt => opt.classList.remove("selected"));
-  const option = document.querySelectorAll(".package-option")[{3:0,6:1,12:2}[months]];
-  option?.classList.add("selected");
-
-  const username = usernameInput.value.trim();
-  orderButton.textContent = `Beli Premium - ${months} Bulan`;
-  updatePreview(username);
-  updateLink(username, months);
-}
-
-function updatePreview(username) {
-  const preview = document.getElementById("previewLink");
-  if (username.startsWith('@') && username.length > 1) {
-    preview.innerHTML = `🔗 <a href="https://t.me/${username.slice(1)}" target="_blank">https://t.me/${username.slice(1)}</a>`;
-  } else {
-    preview.innerHTML = '';
+  if (!nama || !wa || !jenjang || !deadline || !deskripsi) {
+    alert("⚠️ Harap lengkapi semua data yang wajib diisi.");
+    return;
   }
-  document.getElementById("usernameLength").textContent = `${username.length}/32`;
-}
 
-function updateLink(username, duration) {
-  if (!username || !duration) return;
-  const total = priceMap[duration];
-const message = [
-  "🚀 Order Telegram Premium",
-  `👤 Username: ${username}`,
-  `🕐 Durasi: ${duration} Bulan`,
-  `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`
-].join('\n'); // ← Real newlines!
+  let msg = `🧾 Order Jasa Tugas\n`;
+  msg += `👤 Nama: ${nama}\n`;
+  msg += `📱 WhatsApp: ${wa}\n`;
+  msg += `🎓 Jenjang: ${jenjang}\n`;
+  msg += `⏳ Deadline: ${deadline}\n`;
+  msg += `📄 Deskripsi Tugas:\n${deskripsi}\n`;
+  if (catatan) msg += `📝 Catatan Tambahan:\n${catatan}`;
 
-const encoded = encodeURIComponent(message);
+  const encoded = encodeURIComponent(msg);
+  document.getElementById("popupMessage").innerText = msg;
+  document.getElementById("popupOverlay").classList.add("show");
 
-
-  orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
-
-  confirmButton.onclick = () => {
-    document.getElementById("confirmSound").play();
-    showToast();
-    setTimeout(() => {
-      window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
-    }, 1000);
-    setTimeout(() => popupOverlay.classList.remove("show"), 3500);
+  document.getElementById("confirmButton").onclick = () => {
+    window.location.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
   };
 }
 
-usernameInput.addEventListener("input", () => {
-  const username = usernameInput.value.trim();
-  usernameInput.classList.remove("input-error", "input-success");
-  if (username.startsWith("@") && username.length > 3) {
-    usernameInput.classList.add("input-success");
-  }
-  updatePreview(username);
-  updateLink(username, selectedDuration);
-});
-
-orderButton.addEventListener("click", e => {
-  e.preventDefault();
-  const username = usernameInput.value.trim();
-
-  if (!username || !username.startsWith('@') || username.length < 4) {
-    usernameInput.classList.add("input-error");
-    usernameInput.focus();
-    return;
-  }
-  if (!selectedDuration) {
-    alert("⚠️ Silakan pilih durasi langganan.");
-    return;
-  }
-
-  const total = priceMap[selectedDuration];
-  popupMessage.innerHTML = `
-    <div><strong>👤 Username:</strong> <span>${username}</span></div>
-    <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
-    <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
-  `;
-  popupOverlay.classList.add("show");
-});
-
-function showToast(message = "✅ Pesanan dikirim ke admin!") {
-  const toast = document.getElementById("toast");
-  toast.textContent = message;
-  toast.style.opacity = "1";
-  toast.style.transform = "translateY(0)";
-  toast.style.pointerEvents = "auto";
-
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transform = "translateY(20px)";
-    toast.style.pointerEvents = "none";
-  }, 3000);
-}
-
 function closePopup() {
-  popupOverlay.classList.remove("show");
+  document.getElementById("popupOverlay").classList.remove("show");
 }
+
+
 </script>
 
 <div id="toast" style="
