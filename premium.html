@@ -355,15 +355,44 @@
   
 
   .package-option {
-    padding: 0.6rem 0.9rem;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c2f3f;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
 
-   
+.option-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
+.option-right {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
 
-  .package-name {
-    font-size: 0.9rem;
-  }
+.badge {
+  background: #38bdf8;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 10px;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.badge-best {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+}
+
 
   #suggestion {
     font-size: 0.8rem;
