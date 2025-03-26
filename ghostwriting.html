@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Beli Telegram Premium • TeleBank</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+
+.input-icon-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #2c2f3f;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+        
+
+    html, body { height: 100%; }
+    body {
+      background-color: #0d111c;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  padding: 2.5rem 1rem;
+      position: relative;
+    }
+    #particles-js {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(28, 31, 46, 0.95);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 480px;
+      animation: fadeIn 0.5s ease-in-out;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    }
+
+.top-nav {
+  position: sticky;
+  top: 1rem;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  padding: 0.8rem 1.2rem;
+  background: rgba(13, 17, 28, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+
+.top-nav a {
+  padding: 0.6rem 1rem;
+  background-color: #1e2536;
+  color: #7dd3fc;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.top-nav a:hover {
+  background-color: #263041;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+  transform: scale(1.03);
+}
+
+.top-nav a.active {
+  border: 2px solid #38bdf8;
+  background-color: #253044;
+}
+
+.main-page-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 4.5rem 0 2.5rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.15);
+  min-height: 2.5rem; /* Prevent shifting during animation */
+}
+
+.main-page-title::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: #38bdf8;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+    label { font-size: 0.9rem; margin-bottom: 0.3rem; display: block; }
+   .input-icon-group {
+      position: relative; margin-bottom: 0.5rem;
+    }
+    
+   
+
+
+
+
+
+    .username-warning {
+      font-size: 0.8rem; color: #f5c518; margin-top: 0.3rem;
+    }
+    .username-preview {
+      font-size: 0.85rem; color: #66bfff; margin: 0.5rem 0 1.5rem;
+    }
+    .username-preview a {
+      color: #66bfff; text-decoration: none;
+    }
+    .star-box {
+      background: #2c2f3f; border-radius: 12px; padding: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .star-box input {
+      background: transparent; border: none; color: white; font-size: 1.2rem; width: 100%;
+    }
+    .star-summary { font-size: 0.9rem; color: #aaa; }
+    .live-rate { font-size: 0.85rem; color: #7dd3fc; text-align: center; margin-bottom: 1rem; }
+    .package-option {
+      background: #2c2f3f; border-radius: 8px; padding: 0.75rem 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.8rem; cursor: pointer;
+    }
+   .badge {
+  background: #38bdf8;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.badge-best {
+  background: #22c55e;
+}
+    .package-option:hover {
+  background-color: #35394b;
+  box-shadow: 0 0 6px rgba(0, 136, 204, 0.2);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+   .package-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+
+   .buy-button {
+  display: block;
+  width: fit-content;
+  padding: 1rem 2rem;
+  margin: 1.5rem auto 0 auto;
+  border: none;
+  background-color: #38bdf8;
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+
+}
+.buy-button:hover {
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7), 0 0 25px rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+}
+
+    
+    
+    .toggle-packages {
+      text-align: center; margin: 1rem 0; color: #66bfff;
+      cursor: pointer; font-size: 0.9rem;
+    }
+    .subtext {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.popup {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.4s ease;
+  position: relative;
+  background-color: #10131d; /* darker than form */
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 12px rgba(56, 189, 248, 0.15);
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+
+.popup.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.input-error {
+  border: 2px solid #f87171 !important;
+  animation: shake 0.3s ease-in-out;
+}
+
+.input-success {
+  border: 2px solid #4ade80 !important; /* green border */
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.4); /* soft green glow */
+  transition: all 0.2s ease-in-out;
+}
+
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+.best-deal-badge {
+  background-color: #facc15; /* bright yellow */
+  color: #1f2937; /* dark text */
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 0.5rem;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9) translateY(-20px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05) translateY(5px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeInParticles {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+  @keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.icon-bg {
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+
+#particles-js {
+  opacity: 0;
+  animation: fadeInParticles 1s ease-out forwards;
+  animation-delay: 0.3s; /* slight delay to let the content load first */
+}
+
+
+    
+.price-pop {
+  animation: pop 0.2s ease-in-out;
+}
+.package-option.selected {
+  border: 2px solid #38bdf8;
+  background-color: #253044;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.4rem !important;
+  }
+
+  .subtext {
+    font-size: 0.85rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  .star-summary {
+    font-size: 0.85rem;
+  }
+
+  .buy-button {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  
+
+  .package-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* 🧠 important fix */
+  background: #2c2f3f;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+
+.option-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem; /* <- Add this */
+}
+
+
+.option-right {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+.badge {
+  background: #38bdf8;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 10px;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.badge-best {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+}
+
+
+  #suggestion {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+ footer.footer {
+  background: rgba(255, 255, 255, 0.03);
+  margin-top: 2.5rem;
+  padding: 1.2rem 1rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+.floating-telegram {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+  background-color: rgba(56, 189, 248, 0.15);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.floating-telegram img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 4px #38bdf8);
+}
+
+.floating-telegram:hover {
+  transform: scale(1.1);
+  background-color: rgba(56, 189, 248, 0.25);
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: bounceIn 0.6s ease-out;
+}
+
+.icon-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #38bdf8 30%, #0ea5e9 70%);
+  color: white;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+.info-section-title {
+  text-align: center;
+  color: #f1f5f9;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding: 0 1rem 2rem;
+}
+
+
+.info-card {
+  padding: 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1e2536, #151925);
+  color: #e2e8f0;
+  transition: transform 0.35s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  overflow: hidden;
+  text-decoration: none;
+  position: relative;
+  animation: fadeUp 0.6s ease both;
+}
+
+
+
+.info-card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: #38bdf8;
+}
+
+.info-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.info-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* Optional themed backgrounds */
+.info-card.blue {
+  background: radial-gradient(circle at top left, #0f172a, #1e2536);
+}
+.info-card.purple {
+  background: radial-gradient(circle at top left, #3b0764, #1e2536);
+}
+.info-card.green {
+  background: radial-gradient(circle at top left, #065f46, #1e2536);
+}
+.info-card.pink {
+  background: radial-gradient(circle at top left, #831843, #1e2536);
+}
+
+
+@media (max-width: 500px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+   .nav-pill-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.nav-pill {
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 9999px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: 0.2s ease;
+}
+
+.nav-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+}
+
+.nav-pill.active {
+  background: #1e293b;
+  border: 1px solid #38bdf8;
+  color: #e2e8f0;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.popup-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-card {
+  background: #1e2536;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  animation: popIn 0.3s ease;
+}
+
+.popup-message {
+  white-space: pre-wrap;
+  background: #111827;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 1.5rem;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.popup-cancel, .popup-confirm {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.popup-cancel {
+  background: #334155;
+  color: #f87171;
+}
+
+.popup-confirm {
+  background: linear-gradient(to right, #38bdf8, #0ea5e9);
+  color: white;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+   .order-summary-card {
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.order-summary-card div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.order-summary-card div strong {
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+   /* 🌊 Floating Navigation with Scrollable Items */
+.floating-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(13, 17, 28, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 1rem;
+}
+
+.floating-nav.hidden {
+  transform: translateY(-100%);
+}
+
+/* Blue text logo */
+.nav-logo {
+  flex: 0 0 auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-right: 0.75rem;
+}
+
+/* Scrollable nav items */
+.nav-scroll {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pill nav buttons */
+.nav-scroll .nav-pill {
+  flex: 0 0 auto;
+  padding: 0.5rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-scroll .nav-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+.nav-scroll .nav-pill.active {
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    
+  </style>
+</head>
+<body>
+
+
+  <!-- 🧭 Floating Nav Bar -->
+  <nav class="floating-nav" id="floatingNav">
+    <div class="nav-logo">TeleBank.</div>
+    <div class="nav-scroll">
+      <a href="index.html" class="nav-pill">Stars</a>
+      <a href="premium.html" class="nav-pill">Premium</a>
+      <a href="apps.html" class="nav-pill">Apps</a>
+      <a href="ghostwriting.html" class="nav-pill">Joki Tugas</a>
+    </div>
+  </nav>
+
+
+<h1 class="main-page-title" id="typedTitle"></h1>
+
+   
+<div id="particles-js"></div>
+<div class="container">
+
+<label for="username">Masukkan username Telegram</label>
+<div class="input-icon-group">
+
+<input id="username" placeholder="@username" type="text"/>
+<div id="usernameLength" style="font-size: 0.75rem; color: #aaa; margin-top: 0.2rem; text-align: right;">0/32</div>
+</div>
+<div class="username-warning">⚠️ Pastikan username valid dan diawali dengan @. Kami tidak bertanggung jawab atas kesalahan pengiriman.</div>
+<div class="username-preview" id="previewLink"></div>
+<label for="premiumDuration">Pilih Durasi Langganan</label>
+
+<div class="package-option" onclick="selectPremium(3)">
+  <div class="option-left"><strong>3 Bulan</strong></div>
+  <div class="star-summary">Rp200.000</div>
+</div>
+
+<div class="package-option" onclick="selectPremium(6)">
+  <div class="option-left">
+    <strong>6 Bulan</strong>
+    <span class="badge">-30%</span>
+  </div>
+  <div class="option-right">Rp280.000</div>
+</div>
+
+
+
+<div class="package-option" onclick="selectPremium(12)">
+  <div class="option-left">
+    <strong>1 Tahun</strong>
+    <span class="badge badge-best">🔥 Best Deal -37.5%</span>
+
+  </div>
+  <div class="option-right">Rp500.000</div>
+</div>
+
+
+
+<a class="buy-button" id="orderButton" target="_blank">Order Sekarang via Telegram</a>
+<!-- ✅ START OF POPUP INSERT -->
+<!-- 🆕 MODERN POPUP MODAL -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
+  <div class="popup-card" onclick="event.stopPropagation();">
+    <h3 style="margin-bottom: 1rem; font-size: 1.05rem; font-weight: 600; color: #f1f5f9;">
+      Konfirmasi Pesanan
+    </h3>
+    <div id="popupMessage" class="order-summary-card"></div>
+
+    <div class="popup-actions">
+      <button onclick="closePopup()" class="popup-cancel">Batal</button>
+      <button id="confirmButton" class="popup-confirm">Konfirmasi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ END OF POPUP INSERT -->
+
+
+   
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80, density: { enable: true, value_area: 800 } },
+    color: { value: "#0088cc" },
+    shape: { type: "circle" },
+    opacity: { value: 0.3 },
+    size: { value: 3, random: true },
+    line_linked: { enable: true, distance: 150, color: "#0088cc", opacity: 0.3, width: 1 },
+    move: { enable: true, speed: 2 }
+  },
+  interactivity: {
+    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+    modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+  },
+  retina_detect: true
+});
+
+// 🔤 Typing animation
+document.addEventListener("DOMContentLoaded", function () {
+  const title = "Beli Telegram Premium.";
+  const target = document.getElementById("typedTitle");
+  let i = 0;
+  function typeChar() {
+    if (i < title.length) {
+      target.textContent += title.charAt(i);
+      i++;
+      setTimeout(typeChar, 80);
+    }
+  }
+  typeChar();
+});
+
+const priceMap = {
+  3: 200000,
+  6: 280000,
+  12: 500000,
+};
+let selectedDuration = null;
+
+const usernameInput = document.getElementById("username");
+const orderButton = document.getElementById("orderButton");
+const confirmButton = document.getElementById("confirmButton");
+const popupOverlay = document.getElementById("popupOverlay");
+const popupMessage = document.getElementById("popupMessage");
+
+function selectPremium(months) {
+  selectedDuration = months;
+  document.querySelectorAll(".package-option").forEach(opt => opt.classList.remove("selected"));
+  const option = document.querySelectorAll(".package-option")[{3:0,6:1,12:2}[months]];
+  option?.classList.add("selected");
+
+  const username = usernameInput.value.trim();
+  orderButton.textContent = `Beli Premium - ${months} Bulan`;
+  updatePreview(username);
+  updateLink(username, months);
+}
+
+function updatePreview(username) {
+  const preview = document.getElementById("previewLink");
+  if (username.startsWith('@') && username.length > 1) {
+    preview.innerHTML = `🔗 <a href="https://t.me/${username.slice(1)}" target="_blank">https://t.me/${username.slice(1)}</a>`;
+  } else {
+    preview.innerHTML = '';
+  }
+  document.getElementById("usernameLength").textContent = `${username.length}/32`;
+}
+
+function updateLink(username, duration) {
+  if (!username || !duration) return;
+  const total = priceMap[duration];
+const message = [
+  "🚀 Order Telegram Premium",
+  `👤 Username: ${username}`,
+  `🕐 Durasi: ${duration} Bulan`,
+  `💰 Estimasi Harga: Rp${total.toLocaleString('id-ID')}`
+].join('\n'); // ← Real newlines!
+
+const encoded = encodeURIComponent(message);
+
+
+  orderButton.href = `https://t.me/share/url?url=https://t.me/annadelveyy&text=${encoded}`;
+
+  confirmButton.onclick = () => {
+    document.getElementById("confirmSound").play();
+    showToast();
+    setTimeout(() => {
+      window.location.href = `https://t.me/annadelveyy?text=${encoded}`;
+    }, 1000);
+    setTimeout(() => popupOverlay.classList.remove("show"), 3500);
+  };
+}
+
+usernameInput.addEventListener("input", () => {
+  const username = usernameInput.value.trim();
+  usernameInput.classList.remove("input-error", "input-success");
+  if (username.startsWith("@") && username.length > 3) {
+    usernameInput.classList.add("input-success");
+  }
+  updatePreview(username);
+  updateLink(username, selectedDuration);
+});
+
+orderButton.addEventListener("click", e => {
+  e.preventDefault();
+  const username = usernameInput.value.trim();
+
+  if (!username || !username.startsWith('@') || username.length < 4) {
+    usernameInput.classList.add("input-error");
+    usernameInput.focus();
+    return;
+  }
+  if (!selectedDuration) {
+    alert("⚠️ Silakan pilih durasi langganan.");
+    return;
+  }
+
+  const total = priceMap[selectedDuration];
+  popupMessage.innerHTML = `
+    <div><strong>👤 Username:</strong> <span>${username}</span></div>
+    <div><strong>🕐 Durasi:</strong> <span>${selectedDuration} Bulan</span></div>
+    <div><strong>💰 Total:</strong> <span>Rp${total.toLocaleString('id-ID')}</span></div>
+  `;
+  popupOverlay.classList.add("show");
+});
+
+function showToast(message = "✅ Pesanan dikirim ke admin!") {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.opacity = "1";
+  toast.style.transform = "translateY(0)";
+  toast.style.pointerEvents = "auto";
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(20px)";
+    toast.style.pointerEvents = "none";
+  }, 3000);
+}
+
+function closePopup() {
+  popupOverlay.classList.remove("show");
+}
+</script>
+
+<div id="toast" style="
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  background: #22c55e;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+">
+  ✅ Pesanan dikirim ke admin!
+</div>
+<audio id="confirmSound" preload="auto" src="https://cdn.pixabay.com/audio/2022/03/15/audio_49f3a4a2f3.mp3"></audio>
+
+   
+</div>
+
+   <!-- 🌐 Info Island Grid Section -->
+<div class="info-section">
+  <h2 class="info-section-title">Kenali Teleswap Lebih Dekat</h2>
+  <div class="info-grid">
+    <a href="#" class="info-card blue">
+      <div class="info-icon">⭐</div>
+      <div class="info-title">Beli Telegram Stars</div>
+      <div class="info-desc">Isi ulang saldo Stars dengan harga terbaik untuk kamu & teman.</div>
+    </a>
+
+    <a href="https://t.me/yourchannel" class="info-card purple" target="_blank">
+      <div class="info-icon">💬</div>
+      <div class="info-title">Gabung Komunitas</div>
+      <div class="info-desc">Dapatkan update terbaru & promo khusus di channel Telegram kami.</div>
+    </a>
+
+    <a href="careers.html" class="info-card green">
+      <div class="info-icon">🧑‍💻</div>
+      <div class="info-title">Karier di Teleswap</div>
+      <div class="info-desc">Ikut bangun masa depan dengan tim kami. Lihat posisi yang tersedia.</div>
+    </a>
+
+    
+    <a href="reseller.html" class="info-card pink">
+      <div class="info-icon">📢</div>
+      <div class="info-title">Jadi Reseller</div>
+      <div class="info-desc">Dapatkan harga khusus dan jual kembali produk kami. Bergabunglah dengan TeleBand.</div>
+    </a>
+    
+  </div>
+</div>
+   
+   <footer class="footer">
+<p>© 2025 Teleswap Labs</p>
+</footer>
+<a aria-label="Telegram" class="floating-telegram" href="https://t.me/annadelveyy" target="_blank">
+<img alt="Telegram" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+</img></a>
+
+<script>
+  const currentPath = window.location.pathname;
+document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
+  if (currentPath.includes(link.getAttribute("href"))) {
+    link.classList.add("active");
+  }
+});
+
+
+   let lastScrollTop = 0;
+const nav = document.getElementById("floatingNav");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    nav.classList.add("hidden"); // scrolling down
+  } else {
+    nav.classList.remove("hidden"); // scrolling up
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}, false);
+
+
+// 🧭 Highlight active nav tab
+const path = window.location.pathname;
+document.querySelectorAll(".floating-nav .nav-pill").forEach(link => {
+  if (path.includes(link.getAttribute("href"))) {
+    link.classList.add("active");
+  }
+});
+
+
+
+   
+</script>
+
+   
+</body>
+</html>
