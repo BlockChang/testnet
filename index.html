@@ -6,18 +6,28 @@
   <meta name="description" content="Hermeneutika Scholars: Confidential academic writing for elite students in Business, IR, and Social Sciences.">
   <meta name="robots" content="index, follow">
   <title>Hermeneutika Scholars | Discreet Academic Excellence</title>
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Helvetica:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Google Analytics (Uncomment and replace G-XXXXXXXXXX with your ID) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script> -->
+  <link rel="stylesheet" href="/assets/css/styles.css" onload="console.log('styles.css loaded')" onerror="console.error('Failed to load styles.css')">
+  <style>
+    /* Fallback styles in case CSS fails to load */
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background-color: #F8F1E9;
+      color: #1B263B;
+      margin: 0;
+    }
+    h1, h2, h3 {
+      font-family: 'Georgia', serif;
+    }
+    .hero-section {
+      background-image: url('/assets/img/hero-bg.jpg');
+      background-color: #1B263B;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body class="font-sans text-gray-900 bg-ivory">
   <!-- Theme Toggle -->
@@ -28,7 +38,7 @@
   </button>
 
   <!-- Hero Section -->
-  <section class="min-h-screen bg-navy text-ivory flex items-center bg-cover bg-center" style="background-image: url('assets/img/hero-bg.jpg')">
+  <section class="min-h-screen bg-navy text-ivory flex items-center bg-cover bg-center hero-section">
     <div class="container mx-auto px-6 sm:px-8">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4">Hermeneutika Scholars</h1>
       <p class="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">Confidential academic support for discerning students at the world’s leading universities.</p>
@@ -123,7 +133,7 @@
   <!-- Contact Section -->
   <section class="py-12 sm:py-16 bg-ivory">
     <div class="container mx-auto px-6 sm:px-8 text-center">
-      <h2 className="text-2xl sm:text-3xl font-serif text-navy mb-8">Get in Touch</h2>
+      <h2 class="text-2xl sm:text-3xl font-serif text-navy mb-8">Get in Touch</h2>
       <p class="text-sm sm:text-lg mb-6">Reach out to our team of academic experts.</p>
       <div class="flex flex-col items-center gap-4">
         <a href="https://t.me/hermeneutika" target="_blank" rel="noopener noreferrer" class="text-navy underline text-sm sm:text-base">Telegram: @Hermeneutika</a>
@@ -134,32 +144,43 @@
 
   <script>
     // Theme Toggle
-    const toggleButton = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    toggleButton.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButton = document.getElementById('theme-toggle');
+      const html = document.documentElement;
 
-    // Load saved theme on page load
-    window.addEventListener('DOMContentLoaded', () => {
+      // Load saved theme
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         html.classList.add('dark');
       }
-    });
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
+      // Toggle theme on click
+      toggleButton.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
       });
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Log Tailwind CSS loading
+      if (typeof tailwind === 'undefined') {
+        console.error('Tailwind CSS failed to load');
+      } else {
+        console.log('Tailwind CSS loaded');
+      }
     });
   </script>
 </body>
