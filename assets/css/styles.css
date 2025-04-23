@@ -1,25 +1,70 @@
 :root {
-    --navy: #1B263B;
-    --ivory: #F8F1E9;
-    --gold: #D4A373;
+  --navy: #1B263B;
+  --ivory: #F8F1E9;
+  --gold: #D4A373;
+}
+
+body {
+  font-family: 'Helvetica', sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Georgia', serif;
+}
+
+.bg-navy { background-color: var(--navy); }
+.text-navy { color: var(--navy); }
+.bg-ivory { background-color: var(--ivory); }
+.text-ivory { color: var(--ivory); }
+.bg-gold { background-color: var(--gold); }
+.text-gold { color: var(--gold); }
+
+/* Dark mode styles */
+.dark {
+  background-color: var(--navy) !important;
+  color: var(--ivory) !important;
+}
+
+.dark .bg-ivory {
+  background-color: var(--navy) !important;
+}
+
+.dark .text-gray-900 {
+  color: var(--ivory) !important;
+}
+
+.dark .bg-navy {
+  background-color: var(--ivory) !important;
+}
+
+.dark .text-ivory {
+  color: var(--navy) !important;
+}
+
+.dark .bg-gold {
+  background-color: var(--gold) !important;
+}
+
+.dark .text-navy {
+  color: var(--ivory) !important;
+}
+
+/* Ensure hero section background image persists in dark mode */
+section[style*="background-image"] {
+  background-image: inherit !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  
-  body {
-    font-family: 'Helvetica', sans-serif;
+  h1 {
+    font-size: 2.5rem;
   }
-  
-  h1, h2, h3 {
-    font-family: 'Georgia', serif;
+  h2 {
+    font-size: 1.75rem;
   }
-  
-  .bg-navy { background-color: var(--navy); }
-  .text-navy { color: var(--navy); }
-  .bg-ivory { background-color: var(--ivory); }
-  .text-ivory { color: var(--ivory); }
-  .bg-gold { background-color: var(--gold); }
-  .text-gold { color: var(--gold); }
-  
-  .dark .bg-ivory { background-color: var(--navy); }
-  .dark .text-gray-900 { color: var(--ivory); }
-  .dark .bg-navy { background-color: var(--ivory); }
-  .dark .text-ivory { color: var(--navy); }
+}
