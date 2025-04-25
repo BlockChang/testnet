@@ -1,187 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hermeneutika Scholars: Confidential academic writing for elite students in Business, IR, and Social Sciences.">
-  <meta name="robots" content="index, follow">
-  <title>Hermeneutika Scholars | Discreet Academic Excellence</title>
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Helvetica:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css" onload="console.log('styles.css loaded')" onerror="console.error('Failed to load styles.css')">
-  <style>
-    /* Fallback styles in case CSS fails to load */
-    body {
-      font-family: 'Helvetica', sans-serif;
-      background-color: #F8F1E9;
-      color: #1B263B;
-      margin: 0;
-    }
-    h1, h2, h3 {
-      font-family: 'Georgia', serif;
-    }
-    .hero-section {
-      background-image: url('/assets/img/hero-bg.jpg');
-      background-color: #1B263B;
-      background-size: cover;
-      background-position: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Scholar Secure Portal - Brillanz.org</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: #1a1a1a;
+            padding: 10px;
+            border-bottom: 2px solid #00ff00;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .classified {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #ff0000;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .nav {
+            background: #333;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .nav a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #ffffff;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .section {
+            background: #1a1a1a;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+        }
+        .section h2 {
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 5px;
+        }
+        .login form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .login input {
+            background: #333;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        .login button {
+            background: #00ff00;
+            color: #000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .login button:hover {
+            background: #ffffff;
+        }
+        .resources ul {
+            list-style: none;
+            padding: 0;
+        }
+        .resources li {
+            margin: 10px 0;
+        }
+        .resources a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+        .resources a:hover {
+            text-decoration: underline;
+        }
+        .terminal {
+            background: #000;
+            padding: 15px;
+            border: 1px solid #00ff00;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .terminal::before {
+            content: "SECURE TERMINAL ACCESS > ";
+            color: #ff0000;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 0, 0.3);
+            animation: scan 5s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
 </head>
-<body class="font-sans text-gray-900 bg-ivory">
-  <!-- Theme Toggle -->
-  <button id="theme-toggle" class="fixed top-4 right-4 p-2 bg-navy text-ivory rounded-full z-50 hover:bg-navy/80 transition">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-    </svg>
-  </button>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen bg-navy text-ivory flex items-center bg-cover bg-center hero-section">
-    <div class="container mx-auto px-6 sm:px-8">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-4">Hermeneutika Scholars</h1>
-      <p class="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">Confidential academic support for discerning students at the world’s leading universities.</p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#brief" class="bg-gold text-navy px-6 py-3 rounded-lg font-semibold hover:bg-gold/80 transition">Submit Your Brief</a>
-        <a href="https://t.me/hermeneutika" target="_blank" rel="noopener noreferrer" class="border border-ivory text-ivory px-6 py-3 rounded-lg font-semibold hover:bg-ivory hover:text-navy transition">Connect via Telegram</a>
-      </div>
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Business Scholar Secure Portal</h1>
+            <div class="classified">CLASSIFIED: AUTHORIZED PERSONNEL ONLY</div>
+        </div>
+        <div class="nav">
+            <a href="#home">HOME</a>
+            <a href="#resources">RESOURCES</a>
+            <a href="#courses">COURSES</a>
+            <a href="#support">SUPPORT</a>
+        </div>
+        <div class="main">
+            <div class="section login">
+                <h2>SECURE LOGIN</h2>
+                <form>
+                    <input type="text" placeholder="AGENT ID" required>
+                    <input type="password" placeholder="CLEARANCE CODE" required>
+                    <button type="submit">AUTHENTICATE</button>
+                </form>
+            </div>
+            <div class="section resources">
+                <h2>ACADEMIC OPERATIONS</h2>
+                <ul>
+                    <li><a href="#">Strategic Business Analysis</a></li>
+                    <li><a href="#">Financial Modeling Protocols</a></li>
+                    <li><a href="#">Case Study Archives</a></li>
+                    <li><a href="#">Elite Mentorship Network</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="terminal">
+            INITIALIZING SECURE CONNECTION... <br>
+            PROTOCOL: BRILLANZ.ORG V2.7 <br>
+            STATUS: OPERATIONAL <br>
+            LAST ACCESS: 2025-04-25 14:37:09 UTC
+        </div>
     </div>
-  </section>
-
-  <!-- Trust Section -->
-  <section class="py-12 sm:py-16 bg-ivory">
-    <div class="container mx-auto px-6 sm:px-8">
-      <h2 class="text-2xl sm:text-3xl font-serif text-navy text-center mb-8">Trusted by Elite Scholars</h2>
-      <p class="text-center max-w-2xl mx-auto mb-8 text-sm sm:text-base">Hermeneutika Scholars partners with students from MIT, Oxbridge, and top global institutions to deliver meticulously crafted academic work with absolute discretion.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        <div>
-          <p class="font-semibold text-gold text-sm sm:text-base">100% Confidential</p>
-          <p class="text-xs sm:text-sm">End-to-end encryption for all communications.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-gold text-sm sm:text-base">95% A+ Outcomes</p>
-          <p class="text-xs sm:text-sm">Proven success in elite programs.</p>
-        </div>
-        <div>
-          <p class="font-semibold text-gold text-sm sm:text-base">Global Expertise</p>
-          <p class="text-xs sm:text-sm">Serving 40+ top-tier universities.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Expertise Section -->
-  <section class="py-12 sm:py-16 bg-navy text-ivory">
-    <div class="container mx-auto px-6 sm:px-8">
-      <h2 class="text-2xl sm:text-3xl font-serif text-center mb-8">Areas of Expertise</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="bg-ivory text-navy p-6 rounded-lg text-center">
-          <h3 class="font-semibold mb-2 text-sm sm:text-base">Business & Economics</h3>
-          <p class="text-xs sm:text-sm">Case studies, financial models, and strategy papers.</p>
-        </div>
-        <div class="bg-ivory text-navy p-6 rounded-lg text-center">
-          <h3 class="font-semibold mb-2 text-sm sm:text-base">International Relations</h3>
-          <p class="text-xs sm:text-sm">Policy briefs and geopolitical analyses.</p>
-        </div>
-        <div class="bg-ivory text-navy p-6 rounded-lg text-center">
-          <h3 class="font-semibold mb-2 text-sm sm:text-base">Social Sciences</h3>
-          <p class="text-xs sm:text-sm">Research papers in sociology and psychology.</p>
-        </div>
-        <div class="bg-ivory text-navy p-6 rounded-lg text-center">
-          <h3 class="font-semibold mb-2 text-sm sm:text-base">Quantitative Analysis</h3>
-          <p class="text-xs sm:text-sm">Statistical models and econometrics.</p>
-        </div>
-        <div class="bg-ivory text-navy p-6 rounded-lg text-center">
-          <h3 class="font-semibold mb-2 text-sm sm:text-base">Admissions Essays</h3>
-          <p class="text-xs sm:text-sm">Compelling narratives for top universities.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="py-12 sm:py-16 bg-ivory">
-    <div class="container mx-auto px-6 sm:px-8">
-      <h2 class="text-2xl sm:text-3xl font-serif text-navy text-center mb-8">Our Process</h2>
-      <div class="flex flex-col md:flex-row justify-center gap-6 sm:gap-8 text-center">
-        <div class="flex-1">
-          <p class="font-semibold text-gold text-sm sm:text-lg mb-2">1. Submit Brief</p>
-          <p class="text-xs sm:text-sm">Share your requirements via Telegram.</p>
-        </div>
-        <div class="flex-1">
-          <p class="font-semibold text-gold text-sm sm:text-lg mb-2">2. Receive Quote</p>
-          <p class="text-xs sm:text-sm">Get a tailored quote within 10 minutes.</p>
-        </div>
-        <div class="flex-1">
-          <p class="font-semibold text-gold text-sm sm:text-lg mb-2">3. Receive Draft</p>
-          <p class="text-xs sm:text-sm">Original work with one free revision.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Brief Section -->
-  <section id="brief" class="py-12 sm:py-16 bg-navy text-ivory">
-    <div class="container mx-auto px-6 sm:px-8 text-center">
-      <h2 class="text-2xl sm:text-3xl font-serif mb-8">Start Your Project</h2>
-      <p class="text-sm sm:text-lg mb-6">Connect with our team for a confidential consultation.</p>
-      <a href="https://t.me/hermeneutika" target="_blank" rel="noopener noreferrer" class="bg-gold text-navy px-6 py-3 rounded-lg font-semibold hover:bg-gold/80 transition">Contact Us on Telegram</a>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="py-12 sm:py-16 bg-ivory">
-    <div class="container mx-auto px-6 sm:px-8 text-center">
-      <h2 class="text-2xl sm:text-3xl font-serif text-navy mb-8">Get in Touch</h2>
-      <p class="text-sm sm:text-lg mb-6">Reach out to our team of academic experts.</p>
-      <div class="flex flex-col items-center gap-4">
-        <a href="https://t.me/hermeneutika" target="_blank" rel="noopener noreferrer" class="text-navy underline text-sm sm:text-base">Telegram: @Hermeneutika</a>
-        <p class="text-sm sm:text-base">Email: <a href="mailto:contact@hermeneutika.com" class="underline">contact@hermeneutika.com</a></p>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Theme Toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleButton = document.getElementById('theme-toggle');
-      const html = document.documentElement;
-
-      // Load saved theme
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        html.classList.add('dark');
-      }
-
-      // Toggle theme on click
-      toggleButton.addEventListener('click', () => {
-        html.classList.toggle('dark');
-        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-      });
-
-      // Smooth Scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const target = document.querySelector(targetId);
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Log Tailwind CSS loading
-      if (typeof tailwind === 'undefined') {
-        console.error('Tailwind CSS failed to load');
-      } else {
-        console.log('Tailwind CSS loaded');
-      }
-    });
-  </script>
+    <footer>
+        BRILLANZ.ORG | SECURE ACADEMIC NETWORK | ALL RIGHTS RESERVED
+    </footer>
 </body>
 </html>
