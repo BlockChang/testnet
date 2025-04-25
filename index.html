@@ -27,7 +27,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .row { display: flex; flex-wrap: wrap; margin: 0; }
         .col-5of24 { width: 20.8333333333%; padding: 0; }
-        .col-12of24 { width: 50%; padding: 0; }
+        .col-12of24 { width: 50%; padding: 0 24px 0 0; }
         .offset-2of24 { margin-left: 8.3333333333%; }
         .col-sm-12of12 { width: 100%; padding: 0; }
         .offset-sm-0 { margin-left: 0; }
@@ -37,6 +37,7 @@
         @media (max-width: 767px) {
             .col-sm-12of12 { width: 100%; padding: 0; }
             .offset-sm-0 { margin-left: 0; }
+            .col-12of24 { padding: 0; }
         }
 
         /* Typography */
@@ -87,9 +88,10 @@
             .js-section { padding: 40px 0; }
         }
         .c-Project-text-title { color: #003087; }
-        .c-Project-text-body { margin-top: 0; padding-left: 24px; }
+        .c-Project-text-body { margin-top: 0; } /* Removed margin-top since now in same row */
+        .c-Project-text-subtitle { padding-left: 24px; }
         @media (max-width: 767px) {
-            .c-Project-text-body { padding-left: 0; }
+            .c-Project-text-subtitle { padding-left: 0; }
         }
 
         /* Logo Section */
@@ -148,12 +150,16 @@
         }
 
         /* Recruitment Section */
-        .c-RecruitSection { padding: 80px 0; background: linear-gradient(45deg, #003087, #0055b3, #003087); background-size: 200% 200%; animation: gradient 15s ease infinite; }
+        .c-RecruitSection { padding: 80px 0; background: linear-gradient(45deg, #003087, #0055b3, #003087) !important; background-size: 200% 200%; animation: gradient 15s ease infinite; }
         .c-RecruitSection-socials { list-style: none; padding: 0; margin: 20px 0 0; }
         .c-RecruitSection-socials li { display: inline; margin-right: 14px; }
- respondeat (max-width: 767px) {
+        @media (max-width: 767px) {
             .c-RecruitSection { padding: 40px 0; }
         }
+
+        /* Cookies Popup */
+        .c-AppCookies { position: fixed; bottom: 16px; right: 16px; background: #1a1a1a; color: #fff; padding: 16px; border-radius: 8px; z-index: 100; max-width: 300px; border: 1px solid #003087; }
+        .c-AppCookies-btn { margin-top: 16px; }
 
         /* 3D Card Effect */
         .card { perspective: 1000px; }
@@ -161,7 +167,7 @@
         .card:hover .card-inner { transform: rotateY(10deg) rotateX(10deg); }
 
         /* Animated Gradient Background */
-        .gradient-bg { background: linear-gradient(45deg, #003087, #0055b3, #003087); background-size: 200% 200%; animation: gradient 15s ease infinite; }
+        .gradient-bg { background: linear-gradient(45deg, #003087, #0055b3, #003087) !important; background-size: 200% 200%; animation: gradient 15s ease infinite; }
         @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     </style>
 </head>
@@ -221,6 +227,12 @@
                                         <span class="c-LogoSection-label">JSTOR</span>
                                     </div>
                                 </div>
+                                <div class="c-LogoSection-item card">
+                                    <div class="card-inner">
+                                        <img class="c-LogoSection-logo" data-src="/images/source/turnitin.png" alt="Turnitin">
+                                        <span class="c-LogoSection-label">Turnitin</span>
+                                    </div>
+                                </div>
                             </div>
                             <button type="button" class="t-btn-primary c-LogoSection-btn" onclick="toggleLogos('sources')" aria-label="Show more research sources">SHOW MORE</button>
                         </div>
@@ -263,6 +275,18 @@
                                     <div class="card-inner">
                                         <img class="c-LogoSection-logo" data-src="/images/uni/harvard.png" alt="Harvard University">
                                         <span class="c-LogoSection-label">Harvard University</span>
+                                    </div>
+                                </div>
+                                <div class="c-LogoSection-item card">
+                                    <div class="card-inner">
+                                        <img class="c-LogoSection-logo" data-src="/images/uni/yale.png" alt="Yale University">
+                                        <span class="c-LogoSection-label">Yale University</span>
+                                    </div>
+                                </div>
+                                <div class="c-LogoSection-item card">
+                                    <div class="card-inner">
+                                        <img class="c-LogoSection-logo" data-src="/images/uni/wharton.png" alt="Wharton School">
+                                        <span class="c-LogoSection-label">Wharton School</span>
                                     </div>
                                 </div>
                             </div>
@@ -406,6 +430,16 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Cookies Popup -->
+            <div class="c-AppCookies">
+                <div class="c-AppCookies-inner">
+                    <div class="c-AppCookies-desc t-wysiwyg t-text">
+                        <p>This website uses cookies. <a href="/cookie-policy.pdf">Learn more</a>.</p>
+                    </div>
+                    <button type="button" class="c-AppCookies-btn t-btn-primary"><span>ACCEPT</span></button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -441,6 +475,11 @@
                     burger.classList.remove("active");
                     burger.setAttribute("aria-expanded", "false");
                 });
+            });
+
+            // Cookie popup
+            document.querySelector(".c-AppCookies-btn").addEventListener("click", () => {
+                document.querySelector(".c-AppCookies").style.display = "none";
             });
         });
 
