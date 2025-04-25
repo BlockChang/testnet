@@ -19,30 +19,22 @@
         html { line-height: 1.15; -webkit-text-size-adjust: 100%; box-sizing: border-box; }
         *, *:before, *:after { box-sizing: inherit; }
         body { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; color: #fff; background: #000; -webkit-font-smoothing: antialiased; }
-        img { border-style: none; width: 100%; height: auto; }
+        img { border-style: none; max-width: 100%; height: auto; }
         a { background-color: transparent; text-decoration: none; color: inherit; }
         button { font-family: inherit; cursor: pointer; outline: none; }
 
         /* Custom Styles */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .row { display: flex; flex-wrap: wrap; margin: 0 -12px; }
-        .col-10of24 { width: 41.6666666667%; padding: 0 12px; }
-        .offset-2of24 { margin-left: 8.3333333333%; }
-        .col-7of24 { width: 29.1666666667%; padding: 0 12px; }
-        .col-12of24 { width: 50%; padding: 0 12px; }
         .col-5of24 { width: 20.8333333333%; padding: 0 12px; }
-        .col-9of24 { width: 37.5%; padding: 0 12px; }
-        .col-16of24 { width: 66.6666666667%; padding: 0 12px; }
-        .col-6of24 { width: 25%; padding: 0 12px; }
-        .col-11of24 { width: 45.8333333333%; padding: 0 12px; }
-        .col-22of24 { width: 91.6666666667%; padding: 0 12px; }
-        .offset-1of24 { margin-left: 4.1666666667%; }
-        .offset-4of24 { margin-left: 16.6666666667%; }
+        .offset-2of24 { margin-left: 8.3333333333%; }
+        .col-12of24 { width: 50%; padding: 0 12px; }
+        .col-sm-12of12 { width: 100%; padding: 0 12px; }
+        .offset-sm-0 { margin-left: 0; }
         @media (max-width: 979px) {
-            .container { padding: 0 16px; }
+            .container { padding: 0 20px; }
         }
         @media (max-width: 767px) {
-            .col-sm-6of12 { width: 50%; padding: 0 12px; }
             .col-sm-12of12 { width: 100%; padding: 0 12px; }
             .offset-sm-0 { margin-left: 0; }
         }
@@ -100,7 +92,7 @@
         /* Logo Section */
         .c-LogoSection { margin-bottom: 40px; }
         .c-LogoSection-subsection { margin-bottom: 40px; }
-        .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 16px; }
+        .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 16px; padding: 0; }
         .c-LogoSection-item { display: flex; align-items: center; gap: 8px; flex: 1 0 200px; }
         .c-LogoSection-logo { max-width: min(100px, 15vw); height: auto; object-fit: contain; filter: grayscale(100%); transition: filter 0.3s ease, transform 0.3s ease; }
         .c-LogoSection-label { font-size: clamp(12px, 1.5vw, 14px); color: #fff; transition: color 0.3s ease; }
@@ -108,16 +100,17 @@
         .c-LogoSection-item:hover .c-LogoSection-label { color: #003087; }
         .c-LogoSection-more { display: none; }
         .c-LogoSection-more.active { display: flex; }
-        .c-LogoSection-btn { margin-top: 20px; position: relative; overflow: hidden; }
+        .c-LogoSection-btn { margin-top: 20px; position: relative; overflow: hidden; display: none; }
         .c-LogoSection-btn::after {
             content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255, 255, 255, 0.2);
             border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s ease, height 0.6s ease;
         }
         .c-LogoSection-btn:hover::after { width: 200px; height: 200px; }
         @media (max-width: 767px) {
-            .c-LogoSection-logos { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; }
-            .c-LogoSection-logo { max-width: min(150px, 45vw); }
-            .c-LogoSection-logo.university { max-width: min(200px, 50vw); }
+            .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 12px; padding: 0 12px; }
+            .c-LogoSection-item { flex-direction: column; align-items: center; text-align: center; flex: 1 0 120px; }
+            .c-LogoSection-logo { max-width: min(80px, 20vw); }
+            .c-LogoSection-label { font-size: clamp(11px, 1.5vw, 13px); margin-top: 4px; }
             .c-LogoSection-btn { animation: pulse 2s infinite; }
         }
         @keyframes pulse {
@@ -207,7 +200,7 @@
 
             <!-- Credentials Section -->
             <section class="js-section c-LogoSection container" id="credentials">
-                <div class="c-LogoSection-item">
+                <div class="c-LogoSection-subsection">
                     <div class="row">
                         <div class="col-5of24 offset-2of24 col-sm-12of12 offset-sm-0">
                             <h2 class="c-Project-text-title t-h6">/02 RESEARCH SOURCES</h2>
@@ -218,19 +211,18 @@
                                 <p>Our work is backed by leading academic journals and tools, ensuring rigorous research and originality for every assignment.</p>
                             </div>
                             <div class="c-LogoSection-logos" id="sourcesLogos">
-                                <div class="c-LogoSection-img card">
+                                <div class="c-LogoSection-item card">
                                     <div class="card-inner">
                                         <img class="c-LogoSection-logo" data-src="/images/source/jstor.png" alt="JSTOR">
                                         <span class="c-LogoSection-label">JSTOR</span>
                                     </div>
                                 </div>
-                                
                             </div>
                             <button type="button" class="t-btn-primary c-LogoSection-btn" onclick="toggleLogos('sources')" aria-label="Show more research sources">SHOW MORE</button>
                         </div>
                     </div>
                 </div>
-                <div class="c-LogoSection-item">
+                <div class="c-LogoSection-subsection">
                     <div class="row">
                         <div class="col-5of24 offset-2of24 col-sm-12of12 offset-sm-0">
                             <h2 class="c-Project-text-title t-h6">/02.2 RESEARCH SOFTWARE</h2>
@@ -241,19 +233,18 @@
                                 <p>We leverage industry-standard software used by leading universities to deliver precise, high-quality research and writing.</p>
                             </div>
                             <div class="c-LogoSection-logos" id="softwareLogos">
-                                <div class="c-LogoSection-img card">
+                                <div class="c-LogoSection-item card">
                                     <div class="card-inner">
                                         <img class="c-LogoSection-logo" data-src="/images/tools/zotero.png" alt="Zotero">
                                         <span class="c-LogoSection-label">Zotero</span>
                                     </div>
                                 </div>
-                                
                             </div>
                             <button type="button" class="t-btn-primary c-LogoSection-btn" onclick="toggleLogos('software')" aria-label="Show more research software">SHOW MORE</button>
                         </div>
                     </div>
                 </div>
-                <div class="c-LogoSection-item">
+                <div class="c-LogoSection-subsection">
                     <div class="row">
                         <div class="col-5of24 offset-2of24 col-sm-12of12 offset-sm-0">
                             <h2 class="c-Project-text-title t-h6">/03 UNIVERSITIES SERVED</h2>
@@ -264,19 +255,18 @@
                                 <p>We’ve supported ambitious learners at renowned universities, delivering assignments that meet their high standards.</p>
                             </div>
                             <div class="c-LogoSection-logos" id="universitiesLogos">
-                                <div class="c-LogoSection-img card">
+                                <div class="c-LogoSection-item card">
                                     <div class="card-inner">
-                                        <img class="c-LogoSection-logo university" data-src="/images/uni/harvard.png" alt="Harvard University">
+                                        <img class="c-LogoSection-logo" data-src="/images/uni/harvard.png" alt="Harvard University">
                                         <span class="c-LogoSection-label">Harvard University</span>
                                     </div>
                                 </div>
-                                
                             </div>
                             <button type="button" class="t-btn-primary c-LogoSection-btn" onclick="toggleLogos('universities')" aria-label="Show more universities served">SHOW MORE</button>
                         </div>
                     </div>
                 </div>
-                <div class="c-LogoSection-item">
+                <div class="c-LogoSection-subsection">
                     <div class="row">
                         <div class="col-5of24 offset-2of24 col-sm-12of12 offset-sm-0">
                             <h2 class="c-Project-text-title t-h6">/04 PAYMENT SYSTEMS</h2>
@@ -287,25 +277,24 @@
                                 <p>We accept payments in Bitcoin, USDT, and TON, ensuring secure and convenient transactions for our clients.</p>
                             </div>
                             <div class="c-LogoSection-logos" id="paymentsLogos">
-                                <div class="c-LogoSection-img card">
+                                <div class="c-LogoSection-item card">
                                     <div class="card-inner">
                                         <img class="c-LogoSection-logo" data-src="/images/payment/btc.png" alt="Bitcoin">
                                         <span class="c-LogoSection-label">Bitcoin</span>
                                     </div>
                                 </div>
-                                <div class="c-LogoSection-img card">
+                                <div class="c-LogoSection-item card">
                                     <div class="card-inner">
-                                        <img class="c-LogoSection-logo" data-src="/images/payment/usdt.png" alt="USDT Tether">
-                                        <span class="c-LogoSection-label">USDT</span>
+                                        <img class="c-LogoSection-logo" data-src="/images/payment/usdt.png" alt="USDT">
+                                        <span class="c-LogoSection-label">Bitcoin</span>
                                     </div>
                                 </div>
-                                <div class="c-LogoSection-img card">
+                                <div class="c-LogoSection-item card">
                                     <div class="card-inner">
-                                        <img class="c-LogoSection-logo" data-src="/images/payment/ton.png" alt="TON Coin">
-                                        <span class="c-LogoSection-label">TON</span>
+                                        <img class="c-LogoSection-logo" data-src="/images/payment/ton.png" alt="TON">
+                                        <span class="c-LogoSection-label">Bitcoin</span>
                                     </div>
                                 </div>
-                               
                             </div>
                             <button type="button" class="t-btn-primary c-LogoSection-btn" onclick="toggleLogos('payments')" aria-label="Show more payment systems">SHOW MORE</button>
                         </div>
@@ -425,7 +414,6 @@
                     if (entry.isIntersecting) {
                         const img = entry.target;
                         img.src = img.dataset.src;
-                        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
                         observer.unobserve(img);
                     }
                 });
@@ -459,11 +447,12 @@
             formSection.scrollIntoView({ behavior: "smooth" });
         }
 
-        // Toggle Logos
+        // Toggle Logos (disabled for now since only one logo per section)
         function toggleLogos(section) {
             const moreLogos = document.querySelectorAll(`#${section}Logos .c-LogoSection-more[data-section="${section}"]`);
             const button = document.querySelector(`#${section}Logos + .c-LogoSection-btn`);
-            const isHidden = moreLogos[0]?.classList.contains("active");
+            if (!moreLogos.length || !button) return;
+            const isHidden = moreLogos[0].classList.contains("active");
             moreLogos.forEach(logo => logo.classList.toggle("active"));
             button.textContent = isHidden ? "SHOW MORE" : "SHOW LESS";
         }
@@ -484,13 +473,11 @@
             const message = `Support Request\nLevel: ${level}\nSupport Type: ${supportType}\nDeadline: ${deadline}\nDetails: ${details}`;
             const encodedMessage = encodeURIComponent(message);
 
-            // Show popup with form data
             const popup = document.getElementById("confirmationPopup");
             const popupText = document.getElementById("popupText");
             popupText.textContent = message;
             popup.style.display = "flex";
 
-            // Set confirm button to open Telegram
             const confirmButton = document.getElementById("confirmButton");
             confirmButton.onclick = () => {
                 window.open(`https://t.me/stevebendict?text=${encodedMessage}`, "_blank");
