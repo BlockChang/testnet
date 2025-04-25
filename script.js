@@ -20,7 +20,7 @@ function changeColor() {
     colorIndex = (colorIndex + 1) % colors.length;
 }
 
-// Change colors every 3 seconds to allow the transition to complete
+// Change colors every 10 seconds to allow the transition to complete
 setInterval(changeColor, 10000);
 
 const typewriter = new Typed('.js-typer', {
@@ -70,5 +70,48 @@ form.addEventListener('submit', (e) => {
         - Details: ${details || 'None provided'}
     `.trim();
     
-    window.open(`https://t.me/stevebendict?text=${encodeURIComponent(message)}`);
+    const telegramUrl = `https://t.me/stevebendict?text=${encodeURIComponent(message)}`;
+    console.log('Telegram URL:', telegramUrl); // Debug the URL
+    
+    try {
+        const telegramWindow = window.open(telegramUrl, '_blank');
+        if (!telegramWindow) {
+            throw new Error('Popup blocked or failed to open');
+        }
+    } catch (err) {
+        console.error('Failed to open Telegram:', err);
+        // Fallback: Display the link for the user to click manually
+        const fallbackMessage = document.createElement('p');
+        fallbackMessage.innerHTML = `Unable to open Telegram automatically. Please <a href="${telegramUrl}" target="_blank" class="underline">click here</a> to send your request.`;
+        form.appendChild(fallbackMessage);
+    }
+});
+
+// Intersection Observer for auto-highlighting sections when centered in viewport
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.highlightable-section');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const section = entry.target;
+            if (entry.isIntersecting) {
+                // Check if the section's center is within the middle 50% of the viewport
+                const rect = section.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                const sectionCenter = rect.top + rect.height / 2;
+                const viewportCenterStart = viewportHeight * 0.25; // 25% from top
+                const viewportCenterEnd = viewportHeight * 0.75;   // 75% from top
+
+                if (sectionCenter >= viewportCenterStart && sectionCenter <= viewportCenterEnd) {
+                    section.classList.add('is-highlighted');
+                } else {
+                    section.classList.remove('is-highlighted');
+                }
+            }
+        });
+    }, {
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] // Multiple thresholds for smooth detection
+    });
+
+    sections.forEach(section => observer.observe(section));
 });
