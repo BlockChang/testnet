@@ -17,50 +17,58 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script src="/script.js" type="module"></script>
     <style>
-        body { background: #111; color: #fff; }
+        body { background: #111; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; }
         .inner { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
         .type-eyebrow { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .border-opacity-10 { border-color: rgba(255, 255, 255, 0.1); }
+        .border-opacity-10 { border-color: rgba(0, 0, 0, 0.1); }
         .js-typer { display: inline-block; min-height: 300px; }
         .bullet:before { content: '•'; margin-right: 8px; }
-        .underline { text-decoration: underline; }
+        .underline { text-decoration: underline; text-decoration-color: var(--color); transition: text-decoration-color 0.6s ease-linear; }
         .transition-opacity { transition: opacity 0.3s; }
         .group:hover .group-hover\:opacity-100 { opacity: 1; }
         .group:focus .group-focus\:opacity-100 { opacity: 1; }
         .group:hover .group-hover\:scale-100 { transform: scale(1); }
         .group:hover .group-hover\:scale-y-100 { transform: scaleY(1); }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
-        .form-input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.5); color: #fff; padding: 8px 0; width: 100%; }
+        .form-input { background: transparent; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.5); color: #000; padding: 8px 0; width: 100%; }
         .form-input:focus { outline: none; border-color: var(--color); }
         .form-error { color: #ff4d4d; font-size: 12px; display: none; }
         .form-error.is-active { display: block; }
+        .content-section { background: #d5e2c7; color: #333; }
+        .hero-text { font-family: Georgia, "Times New Roman", Times, serif; font-size: 48px; line-height: 1.2; color: #f4e8c7; }
+        .typed-cursor { color: #f4e8c7; font-weight: normal; }
+        .hero-section { position: fixed; top: 0; left: 0; right: 0; bottom: 0; height: 100vh; }
+        @supports (height: 100dvh) {
+            .hero-section { height: 100dvh; }
+            .content-section { margin-top: calc(100dvh - 84px); }
+        }
     </style>
 </head>
 <body>
     <main>
         <!-- Hero Section -->
-        <div class="fixed top-0 left-0 right-0 bottom-0 h-screen flex flex-col justify-center items-center">
+        <div class="hero-section flex flex-col justify-center items-center">
             <div class="inner">
                 <div class="mb-24">
-                    <a class="waiting-for-type type-eyebrow text-white" href="https://t.me/stevebendict">
+                    <a class="type-eyebrow text-white" href="https://t.me/stevebendict">
                         <span class="opacity-50 transition-opacity duration-300 hover:opacity-100 focus:opacity-100">BRILLANZ</span>
                     </a>
                 </div>
                 <h1 class="sr-only">BRILLANZ delivers premium academic writing for top-tier students at Harvard, Yale, Wharton, and beyond.</h1>
-                <div class="text-3xl text-[var(--color)] font-sans min-h-[300px] transition-colors duration-[600] ease-linear">
+                <div class="hero-text min-h-[300px]">
                     <span class="js-typer"></span>
                 </div>
             </div>
         </div>
 
         <!-- Content Sections -->
-        <div class="waiting-for-type mt-[calc(100vh-84px)] bg-[var(--color)] relative z-10">
+        <div class="content-section relative z-10">
             <!-- About Section -->
-            <div id="about" class="">
+            <div id="about">
                 <div class="inner">
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#about">About</a></h2>
                 </div>
-                <div class="border-b border-opacity-10 border-[#111]">
+                <div class="border-b border-opacity-10">
                     <div class="inner">
                         <h3 class="text-2xl opacity-50 pt-16 pb-8 lg:pb-16">
                             For the past 4 years, BRILLANZ has empowered top-tier students with over 1400 meticulously crafted assignments.
@@ -101,14 +109,14 @@
             </div>
 
             <!-- Credentials Section -->
-            <div id="credentials" class="">
+            <div id="credentials">
                 <div class="inner">
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#credentials">Credentials</a></h2>
                 </div>
-                <ul class="divide-y divide-[#111]/[0.1]">
-                    <li class="relative text-[#111]">
+                <ul class="divide-y divide-[#333]/[0.1]">
+                    <li class="relative">
                         <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-[#111] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
+                            <div class="absolute bg-[#d5e2c7] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
                             <div class="inner">
                                 <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
                                     <div class="col-span-12 lg:col-span-7">
@@ -129,7 +137,7 @@
                                             </div>
                                         </div>
                                         <div class="pt-8">
-                                            <a href="https://www.jstor.org" target="_blank" class="inline-block outline outline-4 outline-transparent bg-[#111] text-[var(--color)] py-2 px-4 rounded-full duration-300 transition-all lg:opacity-0 lg:scale-95 group-hover:opacity-100 group-hover:scale-100 hover:bg-opacity-70" data-gtm-category="Credential" data-gtm-action="click" data-gtm-label="JSTOR">
+                                            <a href="https://www.jstor.org" target="_blank" class="inline-block outline outline-4 outline-transparent bg-[#d5e2c7] text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all lg:opacity-0 lg:scale-95 group-hover:opacity-100 group-hover:scale-100 hover:bg-opacity-70" data-gtm-category="Credential" data-gtm-action="click" data-gtm-label="JSTOR">
                                                 View JSTOR
                                             </a>
                                         </div>
@@ -138,9 +146,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="relative text-[#111]">
+                    <li class="relative">
                         <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-[#111] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
+                            <div class="absolute bg-[#d5e2c7] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
                             <div class="inner">
                                 <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
                                     <div class="col-span-12 lg:col-span-7">
@@ -162,7 +170,7 @@
                                             </div>
                                         </div>
                                         <div class="pt-8">
-                                            <a href="https://www.harvard.edu" target="_blank" class="inline-block outline outline-4 outline-transparent bg-[#111] text-[var(--color)] py-2 px-4 rounded-full duration-300 transition-all lg:opacity-0 lg:scale-95 group-hover:opacity-100 group-hover:scale-100 hover:bg-opacity-70" data-gtm-category="Credential" data-gtm-action="click" data-gtm-label="Harvard">
+                                            <a href="https://www.harvard.edu" target="_blank" class="inline-block outline outline-4 outline-transparent bg-[#d5e2c7] text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all lg:opacity-0 lg:scale-95 group-hover:opacity-100 group-hover:scale-100 hover:bg-opacity-70" data-gtm-category="Credential" data-gtm-action="click" data-gtm-label="Harvard">
                                                 View Harvard
                                             </a>
                                         </div>
@@ -171,9 +179,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="relative text-[#111]">
+                    <li class="relative">
                         <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-[#111] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
+                            <div class="absolute bg-[#d5e2c7] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
                             <div class="inner">
                                 <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
                                     <div class="col-span-12 lg:col-span-7">
@@ -194,7 +202,7 @@
                                             </div>
                                         </div>
                                         <div class="pt-8">
-                                            <a href="https://bitcoin.org" target="_blank" class="inline-block outline outline-4 outline-transparent bg-[#111] text-[var(--color)] py-2 px-4 rounded-full duration-300 transition-all lg:opacity-0 lg:scale-95 group-hover:opacity-100 group-hover:scale-100 hover:bg-opacity-70" data-gtm-category="Credential" data-gtm-action="click" data-gtm-label="Bitcoin">
+                                            <a href="https://bitcoin.org" target="_blank" class="inline-block outline outline-4 outline-transparent bg-[#d5e2c7] text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all lg:opacity-0 lg:scale-95 group-hover:opacity-100 group-hover:scale-100 hover:bg-opacity-70" data-gtm-category="Credential" data-gtm-action="click" data-gtm-label="Bitcoin">
                                                 View Bitcoin
                                             </a>
                                         </div>
@@ -207,11 +215,11 @@
             </div>
 
             <!-- Services Section -->
-            <div id="services" class="">
+            <div id="services">
                 <div class="inner">
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#services">Services</a></h2>
                 </div>
-                <div class="border-b border-opacity-10 border-[#111]">
+                <div class="border-b border-opacity-10">
                     <div class="inner">
                         <h3 class="text-2xl opacity-50 pt-16 pb-8 lg:pb-16">
                             Tailored academic writing for business disciplines.
@@ -234,11 +242,11 @@
             </div>
 
             <!-- Support Section -->
-            <div id="support" class="">
+            <div id="support">
                 <div class="inner">
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#support">Support</a></h2>
                 </div>
-                <div class="border-b border-opacity-10 border-[#111]">
+                <div class="border-b border-opacity-10">
                     <div class="inner">
                         <h3 class="text-2xl opacity-50 pt-16 pb-8 lg:pb-16">
                             Get a custom quote within 30 minutes via Telegram.
@@ -275,7 +283,7 @@
                                         <label for="details" class="type-eyebrow opacity-50">Additional Details</label>
                                         <textarea id="details" class="form-input mt-2" rows="4"></textarea>
                                     </div>
-                                    <button type="submit" class="inline-block outline outline-4 outline-transparent bg-[#111] text-[var(--color)] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-gtm-category="Form" data-gtm-action="submit" data-gtm-label="Support Request">
+                                    <button type="submit" class="inline-block outline outline-4 outline-transparent bg-[#d5e2c7] text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-gtm-category="Form" data-gtm-action="submit" data-gtm-label="Support Request">
                                         Submit Request
                                     </button>
                                 </div>
@@ -286,14 +294,14 @@
             </div>
 
             <!-- Testimonials Section -->
-            <div id="testimonials" class="">
+            <div id="testimonials">
                 <div class="inner">
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#testimonials">Testimonials</a></h2>
                 </div>
-                <ul class="divide-y divide-[#111]/[0.1]">
-                    <li class="relative text-[#111]">
+                <ul class="divide-y divide-[#333]/[0.1]">
+                    <li class="relative">
                         <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-[#111] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
+                            <div class="absolute bg-[#d5e2c7] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
                             <div class="inner">
                                 <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
                                     <div class="col-span-12 lg:col-span-7">
@@ -316,9 +324,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="relative text-[#111]">
+                    <li class="relative">
                         <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-[#111] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
+                            <div class="absolute bg-[#d5e2c7] pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
                             <div class="inner">
                                 <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
                                     <div class="col-span-12 lg:col-span-7">
@@ -345,11 +353,11 @@
             </div>
 
             <!-- Join Section -->
-            <div id="join" class="">
+            <div id="join">
                 <div class="inner">
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#join">Join</a></h2>
                 </div>
-                <div class="border-b border-opacity-10 border-[#111]">
+                <div class="border-b border-opacity-10">
                     <div class="inner">
                         <h3 class="text-2xl opacity-50 pt-16 pb-8 lg:pb-16">
                             Join our team of exceptional academic writers.
@@ -372,11 +380,11 @@
             </div>
 
             <!-- Footer -->
-            <footer class="border-t border-opacity-10 border-[#111]">
+            <footer class="border-t border-opacity-10">
                 <div class="inner">
                     <div class="text-2xl pt-24 pb-16 lg:pt-48 lg:pb-32">
                         <p>
-                            <span class="opacity-50">Thanks for visiting. For academic support or to join our team, </span>
+                            <span class="opacity-50">Thanks for stopping by. For academic support or to join our team, </span>
                             <a href="https://t.me/stevebendict" class="underline opacity-50 transition-opacity duration-300 hover:opacity-100 focus:opacity-100">contact us on Telegram</a>
                             <span class="opacity-50">.</span>
                         </p>
