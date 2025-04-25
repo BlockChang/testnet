@@ -25,17 +25,17 @@
 
         /* Custom Styles */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .row { display: flex; flex-wrap: wrap; margin: 0 -12px; }
-        .col-5of24 { width: 20.8333333333%; padding: 0 12px; }
+        .row { display: flex; flex-wrap: wrap; margin: 0; }
+        .col-5of24 { width: 20.8333333333%; padding: 0; }
+        .col-12of24 { width: 50%; padding: 0; }
         .offset-2of24 { margin-left: 8.3333333333%; }
-        .col-12of24 { width: 50%; padding: 0 12px; }
-        .col-sm-12of12 { width: 100%; padding: 0 12px; }
+        .col-sm-12of12 { width: 100%; padding: 0; }
         .offset-sm-0 { margin-left: 0; }
         @media (max-width: 979px) {
             .container { padding: 0 20px; }
         }
         @media (max-width: 767px) {
-            .col-sm-12of12 { width: 100%; padding: 0 12px; }
+            .col-sm-12of12 { width: 100%; padding: 0; }
             .offset-sm-0 { margin-left: 0; }
         }
 
@@ -87,31 +87,35 @@
             .js-section { padding: 40px 0; }
         }
         .c-Project-text-title { color: #003087; }
-        .c-Project-text-body { margin-top: 24px; }
+        .c-Project-text-body { margin-top: 0; padding-left: 24px; }
+        @media (max-width: 767px) {
+            .c-Project-text-body { padding-left: 0; }
+        }
 
         /* Logo Section */
         .c-LogoSection { margin-bottom: 40px; }
         .c-LogoSection-subsection { margin-bottom: 40px; }
-        .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 16px; padding: 0; }
-        .c-LogoSection-item { display: flex; align-items: center; gap: 8px; flex: 1 0 200px; }
-        .c-LogoSection-logo { max-width: min(100px, 15vw); height: auto; object-fit: contain; filter: grayscale(100%); transition: filter 0.3s ease, transform 0.3s ease; }
+        .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 16px; padding: 0 12px; }
+        .c-LogoSection-item { display: flex; align-items: center; gap: 12px; flex: 1 0 200px; }
+        .c-LogoSection-logo { max-width: min(60px, 10vw); height: auto; object-fit: contain; filter: grayscale(100%); transition: filter 0.3s ease, transform 0.3s ease; }
         .c-LogoSection-label { font-size: clamp(12px, 1.5vw, 14px); color: #fff; transition: color 0.3s ease; }
         .c-LogoSection-item:hover .c-LogoSection-logo { filter: grayscale(0%); transform: scale(1.1); }
         .c-LogoSection-item:hover .c-LogoSection-label { color: #003087; }
         .c-LogoSection-more { display: none; }
         .c-LogoSection-more.active { display: flex; }
         .c-LogoSection-btn { margin-top: 20px; position: relative; overflow: hidden; display: none; }
+        .c-LogoSection-btn.payments-active { display: inline-flex; }
         .c-LogoSection-btn::after {
             content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255, 255, 255, 0.2);
             border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s ease, height 0.6s ease;
         }
         .c-LogoSection-btn:hover::after { width: 200px; height: 200px; }
         @media (max-width: 767px) {
-            .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 12px; padding: 0 12px; }
-            .c-LogoSection-item { flex-direction: column; align-items: center; text-align: center; flex: 1 0 120px; }
+            .c-LogoSection-logos { gap: 12px; padding: 0 12px; }
+            .c-LogoSection-item { flex-direction: column; align-items: center; text-align: center; flex: 1 0 120px; gap: 4px; }
             .c-LogoSection-logo { max-width: min(80px, 20vw); }
             .c-LogoSection-label { font-size: clamp(11px, 1.5vw, 13px); margin-top: 4px; }
-            .c-LogoSection-btn { animation: pulse 2s infinite; }
+            .c-LogoSection-btn.payments-active { animation: pulse 2s infinite; }
         }
         @keyframes pulse {
             0% { transform: scale(1); }
@@ -147,7 +151,7 @@
         .c-RecruitSection { padding: 80px 0; background: linear-gradient(45deg, #003087, #0055b3, #003087); background-size: 200% 200%; animation: gradient 15s ease infinite; }
         .c-RecruitSection-socials { list-style: none; padding: 0; margin: 20px 0 0; }
         .c-RecruitSection-socials li { display: inline; margin-right: 14px; }
-        @media (max-width: 767px) {
+ respondeat (max-width: 767px) {
             .c-RecruitSection { padding: 40px 0; }
         }
 
@@ -189,7 +193,7 @@
                         <h2 class="c-Project-text-title t-h6">/01 ABOUT US</h2>
                         <h3 class="c-Project-text-subtitle t-h5">Excellence in Academic Writing</h3>
                     </div>
-                    <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                    <div class="c-Project-text-body col-12of24 col-sm-12of12">
                         <div class="t-wysiwyg t-text">
                             <p>Since February 2021, BRILLANZ has delivered over 1400 high-quality assignments for top-tier students at prestigious institutions like Harvard, Yale, Wharton, and more. Our team specializes in business-related academic writing, ensuring originality and precision. Trusted by high-achieving scholars, we accept payments exclusively in cryptocurrency (Bitcoin, USDT, TON) for security and convenience.</p>
                             <button type="button" class="t-btn-primary" onclick="showSupportForm()">GET STARTED TODAY</button>
@@ -206,7 +210,7 @@
                             <h2 class="c-Project-text-title t-h6">/02 RESEARCH SOURCES</h2>
                             <h3 class="c-Project-text-subtitle t-h5">Trusted Academic Resources</h3>
                         </div>
-                        <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                        <div class="c-Project-text-body col-12of24 col-sm-12of12">
                             <div class="t-wysiwyg t-text">
                                 <p>Our work is backed by leading academic journals and tools, ensuring rigorous research and originality for every assignment.</p>
                             </div>
@@ -228,7 +232,7 @@
                             <h2 class="c-Project-text-title t-h6">/02.2 RESEARCH SOFTWARE</h2>
                             <h3 class="c-Project-text-subtitle t-h5">Premier Research Tools</h3>
                         </div>
-                        <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                        <div class="c-Project-text-body col-12of24 col-sm-12of12">
                             <div class="t-wysiwyg t-text">
                                 <p>We leverage industry-standard software used by leading universities to deliver precise, high-quality research and writing.</p>
                             </div>
@@ -250,7 +254,7 @@
                             <h2 class="c-Project-text-title t-h6">/03 UNIVERSITIES SERVED</h2>
                             <h3 class="c-Project-text-subtitle t-h5">Top-Tier Schools</h3>
                         </div>
-                        <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                        <div class="c-Project-text-body col-12of24 col-sm-12of12">
                             <div class="t-wysiwyg t-text">
                                 <p>We’ve supported ambitious learners at renowned universities, delivering assignments that meet their high standards.</p>
                             </div>
@@ -272,7 +276,7 @@
                             <h2 class="c-Project-text-title t-h6">/04 PAYMENT SYSTEMS</h2>
                             <h3 class="c-Project-text-subtitle t-h5">Secure Cryptocurrency</h3>
                         </div>
-                        <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                        <div class="c-Project-text-body col-12of24 col-sm-12of12">
                             <div class="t-wysiwyg t-text">
                                 <p>We accept payments in Bitcoin, USDT, and TON, ensuring secure and convenient transactions for our clients.</p>
                             </div>
@@ -285,18 +289,18 @@
                                 </div>
                                 <div class="c-LogoSection-item card">
                                     <div class="card-inner">
-                                        <img class="c-LogoSection-logo" data-src="/images/payment/usdt.png" alt="USDT">
-                                        <span class="c-LogoSection-label">Bitcoin</span>
+                                        <img class="c-LogoSection-logo" data-src="/images/payment/usdt.png" alt="USDT Tether">
+                                        <span class="c-LogoSection-label">USDT</span>
                                     </div>
                                 </div>
                                 <div class="c-LogoSection-item card">
                                     <div class="card-inner">
-                                        <img class="c-LogoSection-logo" data-src="/images/payment/ton.png" alt="TON">
-                                        <span class="c-LogoSection-label">Bitcoin</span>
+                                        <img class="c-LogoSection-logo" data-src="/images/payment/ton.png" alt="TON Coin">
+                                        <span class="c-LogoSection-label">TON</span>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="t-btn-primary c-LogoSection-btn" onclick="toggleLogos('payments')" aria-label="Show more payment systems">SHOW MORE</button>
+                            <button type="button" class="t-btn-primary c-LogoSection-btn payments-active" onclick="toggleLogos('payments')" aria-label="Show more payment systems">SHOW MORE</button>
                         </div>
                     </div>
                 </div>
@@ -309,7 +313,7 @@
                         <h2 class="c-Project-text-title t-h6">/05 OUR SERVICES</h2>
                         <h3 class="c-Project-text-subtitle t-h5">Tailored Academic Support</h3>
                     </div>
-                    <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                    <div class="c-Project-text-body col-12of24 col-sm-12of12">
                         <div class="t-wysiwyg t-text">
                             <p>We provide custom academic writing services, including essays, case studies, and research papers, focused on business disciplines. Each assignment is crafted to meet the rigorous standards of renowned universities, with guaranteed originality and confidentiality. Contact us via Telegram to discuss your needs.</p>
                             <button type="button" class="t-btn-primary" onclick="showSupportForm()">REQUEST SUPPORT NOW</button>
@@ -325,7 +329,7 @@
                         <h2 class="c-Project-text-title t-h6">/06 REQUEST SUPPORT</h2>
                         <h3 class="c-Project-text-subtitle t-h5">Get Your Custom Quote</h3>
                     </div>
-                    <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                    <div class="c-Project-text-body col-12of24 col-sm-12of12">
                         <div class="t-wysiwyg t-text">
                             <p>Tell us about your academic needs, and we’ll provide a quote within 30 minutes via Telegram.</p>
                         </div>
@@ -377,7 +381,7 @@
                         <h2 class="c-Project-text-title t-h6">/07 JOIN OUR TEAM</h2>
                         <h3 class="c-Project-text-subtitle t-h5">Write for Excellence</h3>
                     </div>
-                    <div class="c-Project-text-body col-12of24 offset-2of24 col-sm-12of12 offset-sm-0">
+                    <div class="c-Project-text-body col-12of24 col-sm-12of12">
                         <div class="t-wysiwyg t-text">
                             <p>Join BRILLANZ, where exceptional academic writers craft outstanding work for ambitious learners worldwide. We seek talented individuals with a passion for precision and a commitment to excellence. Apply to become part of a prestigious team trusted by students at top-tier schools like Harvard, Yale, Wharton, and beyond. Send your resume to our recruitment team via Telegram for a chance to shape the future of academic success.</p>
                             <a href="https://t.me/clarissatanu" class="t-btn-primary"><span>SEND RESUME</span></a>
@@ -447,7 +451,7 @@
             formSection.scrollIntoView({ behavior: "smooth" });
         }
 
-        // Toggle Logos (disabled for now since only one logo per section)
+        // Toggle Logos
         function toggleLogos(section) {
             const moreLogos = document.querySelectorAll(`#${section}Logos .c-LogoSection-more[data-section="${section}"]`);
             const button = document.querySelector(`#${section}Logos + .c-LogoSection-btn`);
