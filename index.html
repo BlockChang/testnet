@@ -99,13 +99,13 @@
 
         /* Logo Section */
         .c-LogoSection { margin-bottom: 40px; }
-        .c-LogoSection-item { margin-bottom: 40px; }
-        .c-LogoSection-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
-        .c-LogoSection-img { width: 100%; }
-        .c-LogoSection-logo { max-width: min(200px, 30vw); height: auto; object-fit: contain; }
-        .c-LogoSection-logo.university { max-width: min(300px, 40vw); }
-        .c-LogoSection-img img { filter: grayscale(100%); transition: filter 0.3s ease, transform 0.3s ease; }
-        .c-LogoSection-img:hover img { filter: grayscale(0%); transform: scale(1.1); }
+        .c-LogoSection-subsection { margin-bottom: 40px; }
+        .c-LogoSection-logos { display: flex; flex-wrap: wrap; gap: 16px; }
+        .c-LogoSection-item { display: flex; align-items: center; gap: 8px; flex: 1 0 200px; }
+        .c-LogoSection-logo { max-width: min(100px, 15vw); height: auto; object-fit: contain; filter: grayscale(100%); transition: filter 0.3s ease, transform 0.3s ease; }
+        .c-LogoSection-label { font-size: clamp(12px, 1.5vw, 14px); color: #fff; transition: color 0.3s ease; }
+        .c-LogoSection-item:hover .c-LogoSection-logo { filter: grayscale(0%); transform: scale(1.1); }
+        .c-LogoSection-item:hover .c-LogoSection-label { color: #003087; }
         .c-LogoSection-more { display: none; }
         .c-LogoSection-more.active { display: flex; }
         .c-LogoSection-btn { margin-top: 20px; position: relative; overflow: hidden; }
