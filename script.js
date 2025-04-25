@@ -1,87 +1,70 @@
-const colors = ['#e699a6', '#4fd1c5', '#f6ad55', '#a78bfa', '#f687b3'];
+const colors = [
+    '#f9d1d1', // Pastel Pink
+    '#d1e8f9', // Pastel Blue
+    '#e2d1f9', // Pastel Purple
+    '#f9f3d1', // Pastel Yellow
+    '#d1f9e2', // Pastel Green
+    '#f9e2d1', // Pastel Orange
+    '#d1f9f9'  // Pastel Cyan
+];
+
 let colorIndex = 0;
 
 function changeColor() {
+    const newColor = colors[colorIndex];
+    document.body.style.backgroundColor = newColor;
+    console.log(`Color changed to: ${newColor}`);
     colorIndex = (colorIndex + 1) % colors.length;
-    document.documentElement.style.setProperty('--color', colors[colorIndex]);
-    console.log('Color changed to:', colors[colorIndex]);
 }
 
-// Continuous color change every 1 second
 setInterval(changeColor, 1000);
 
-// Fallback for viewport height adjustment
-function adjustContentMargin() {
-    const heroHeight = window.innerHeight;
-    const contentSection = document.querySelector('.content-section');
-    contentSection.style.marginTop = `calc(${heroHeight}px - 84px)`;
-}
-window.addEventListener('load', adjustContentMargin);
-window.addEventListener('resize', adjustContentMargin);
-
-// Typewriter Effect (looping shorter phrases)
-setTimeout(() => {
-    try {
-        new Typed('.js-typer', {
-            strings: [
-                'Elite academic solutions.',
-                'For top business scholars.',
-                'Turnitin-verified work.',
-                'Secure crypto payments.'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|'
-        });
-        console.log('Typewriter initialized successfully');
-    } catch (error) {
-        console.error('Typewriter initialization failed:', error);
-    }
-}, 1000);
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-    });
+const typewriter = new Typed('.js-typer', {
+    strings: [
+        'BRILLANZ provides elite business school assignment help.',
+        '100% original, Turnitin-verified work.',
+        'Secure crypto payments.'
+    ],
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 1000,
+    startDelay: 500,
+    loop: true,
+    onStart: () => console.log('Typewriter initialized successfully')
 });
 
-// View More Buttons
 document.querySelectorAll('.view-more-btn').forEach(button => {
     button.addEventListener('click', () => {
-        const targetClass = button.getAttribute('data-target');
-        const list = document.querySelector(`.${targetClass}`);
-        list.classList.toggle('expanded');
-        button.textContent = list.classList.contains('expanded') ? 'View Less' : 'View More';
+        const targetList = button.parentElement.previousElementSibling;
+        targetList.classList.toggle('expanded');
+        button.textContent = targetList.classList.contains('expanded') ? 'View Less' : 'View More';
     });
 });
 
-// Support Form
-const form = document.querySelector('#support-form');
-const deadlineInput = document.querySelector('#deadline');
-deadlineInput.addEventListener('change', () => {
-    const today = new Date().toISOString().split('T')[0];
-    const error = deadlineInput.nextElementSibling;
-    if (deadlineInput.value < today) {
-        error.classList.add('is-active');
-        deadlineInput.setCustomValidity('Please select a future date.');
-    } else {
-        error.classList.remove('is-active');
-        deadlineInput.setCustomValidity('');
-    }
-});
-
-form.addEventListener('submit', e => {
+const form = document.getElementById('support-form');
+form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const level = document.querySelector('#academic-level').value;
-    const type = document.querySelector('#support-type').value;
-    const deadline = deadlineInput.value;
-    const details = document.querySelector('#details').value;
-    const message = encodeURIComponent(`Support Request\nLevel: ${level}\nType: ${type}\nDeadline: ${deadline}\nDetails: ${details}`);
-    window.open(`https://t.me/stevebendict?text=${message}`, '_blank');
-    form.reset();
+    const deadline = new Date(document.getElementById('deadline').value);
+    const today = new Date();
+    const error = document.querySelector('.form-error');
+    
+    if (deadline < today) {
+        error.classList.add('is-active');
+        return;
+    }
+    
+    error.classList.remove('is-active');
+    const academicLevel = document.getElementById('academic-level').value;
+    const supportType = document.getElementById('support-type').value;
+    const details = document.getElementById('details').value;
+    
+    const message = `
+        New support request:
+        - Academic Level: ${academicLevel}
+        - Support Type: ${supportType}
+        - Deadline: ${deadline.toISOString().split('T')[0]}
+        - Details: ${details || 'None provided'}
+    `.trim();
+    
+    window.open(`https://t.me/stevebendict?text=${encodeURIComponent(message)}`);
 });
