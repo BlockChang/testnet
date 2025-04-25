@@ -29,7 +29,7 @@ const typewriter = new Typed('.js-typer', {
         '100% original, Turnitin-verified work.',
         'Secure crypto payments.'
     ],
-    typeSpeed: 50,
+    typeSpeed: 30,
     backSpeed: 30,
     backDelay: 1000,
     startDelay: 500,
