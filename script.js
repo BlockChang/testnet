@@ -45,6 +45,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// View More Buttons
+document.querySelectorAll('.view-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetClass = button.getAttribute('data-target');
+        const list = document.querySelector(`.${targetClass}`);
+        list.classList.toggle('expanded');
+        button.textContent = list.classList.contains('expanded') ? 'View Less' : 'View More';
+    });
+});
+
 // Support Form
 const form = document.querySelector('#support-form');
 const deadlineInput = document.querySelector('#deadline');
