@@ -4,42 +4,37 @@ let colorIndex = 0;
 function changeColor() {
     colorIndex = (colorIndex + 1) % colors.length;
     document.documentElement.style.setProperty('--color', colors[colorIndex]);
+    console.log('Color changed to:', colors[colorIndex]);
 }
 
-// Interaction-based color changes
-document.addEventListener('click', changeColor);
-document.addEventListener('scroll', () => {
-    if (Math.random() > 0.7) changeColor();
-});
-document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseover', () => {
-        if (Math.random() > 0.5) changeColor();
-    });
-});
+// Continuous color change every 5 seconds
+setInterval(changeColor, 5000);
 
-// Idle-based color change
-let idleTimer;
-function resetIdleTimer() {
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(changeColor, 5000);
+// Fallback for viewport height adjustment
+function adjustContentMargin() {
+    const heroHeight = window.innerHeight;
+    const contentSection = document.querySelector('.content-section');
+    contentSection.style.marginTop = `calc(${heroHeight}px - 84px)`;
 }
-document.addEventListener('mousemove', resetIdleTimer);
-document.addEventListener('keydown', resetIdleTimer);
-resetIdleTimer();
+window.addEventListener('load', adjustContentMargin);
+window.addEventListener('resize', adjustContentMargin);
 
-// Typewriter Effect
+// Typewriter Effect (single string, no loop)
 setTimeout(() => {
-    new Typed('.js-typer', {
-        strings: [
-            'Elite Academic Writing.',
-            'For Top Scholars.',
-            'Secure. Original.'
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 2000,
-        loop: true
-    });
+    try {
+        new Typed('.js-typer', {
+            strings: ['BRILLANZ crafts unparalleled academic solutions for the world’s brightest minds.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: false,
+            showCursor: true,
+            cursorChar: '|'
+        });
+        console.log('Typewriter initialized successfully');
+    } catch (error) {
+        console.error('Typewriter initialization failed:', error);
+    }
 }, 1000);
 
 // Smooth Scroll
