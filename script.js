@@ -12,12 +12,16 @@ let colorIndex = 0;
 
 function changeColor() {
     const newColor = colors[colorIndex];
-    document.body.style.backgroundColor = newColor;
-    console.log(`Color changed to: ${newColor}`);
+    // Change the content section background color
+    document.querySelector('.content-section').style.backgroundColor = newColor;
+    // Set a CSS variable for the hero text and logo to match
+    document.body.style.setProperty('--current-color', newColor);
+    console.log(`Content section color changed to: ${newColor}`);
     colorIndex = (colorIndex + 1) % colors.length;
 }
 
-setInterval(changeColor, 1000);
+// Change colors every 3 seconds to allow the transition to complete
+setInterval(changeColor, 3000);
 
 const typewriter = new Typed('.js-typer', {
     strings: [
