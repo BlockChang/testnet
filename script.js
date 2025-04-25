@@ -82,3 +82,26 @@ form.addEventListener('submit', (e) => {
         form.appendChild(fallbackMessage);
     }
 });
+
+// Intersection Observer for bold text on scroll
+const observerOptions = {
+    root: null, // Use the viewport as the root
+    rootMargin: '0px',
+    threshold: 0.5 // Trigger when 50% of the section is visible
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        const heading = entry.target.querySelector('.highlightable-heading');
+        if (entry.isIntersecting) {
+            heading.classList.add('is-bold');
+        } else {
+            heading.classList.remove('is-bold');
+        }
+    });
+}, observerOptions);
+
+// Observe each section with a highlightable heading
+document.querySelectorAll('.highlightable-section').forEach(section => {
+    observer.observe(section);
+});
