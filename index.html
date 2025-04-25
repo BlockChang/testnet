@@ -73,6 +73,37 @@
         .hero-logo a { color: var(--current-color); } /* Logo matches content section color */
         .hidden-items { display: none; }
         .expanded .hidden-items { display: block; }
+        /* Updated styles for auto-highlighting */
+        .highlightable-section { 
+            opacity: 0.5; 
+            transition: opacity 0.3s ease; 
+        }
+        .highlightable-section.is-highlighted { 
+            opacity: 1; 
+        }
+        .highlightable-section.is-highlighted .highlightable-content { 
+            opacity: 1; 
+        }
+        .highlightable-content { 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        }
+        .highlightable-section.is-highlighted .highlightable-overlay { 
+            transform: scaleY(1); 
+            opacity: 0.1; 
+        }
+        .highlightable-overlay { 
+            position: absolute; 
+            background: inherit; 
+            pointer-events: none; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            transform: scaleY(0.75); 
+            opacity: 0; 
+            transition: transform 0.1s ease, opacity 0.1s ease; 
+        }
         @supports (height: 100dvh) {
             .hero-section { height: 100dvh; }
             .content-section { margin-top: calc(100dvh - 84px); }
@@ -152,51 +183,49 @@
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#credentials">Credentials</a></h2>
                 </div>
                 <ul class="divide-y divide-[#333]/[0.1]">
-                    <li class="relative">
-                        <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-inherit pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
-                            <div class="inner">
-                                <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
-                                    <div class="col-span-12 lg:col-span-7">
-                                        <h3 class="text-3xl lg:pr-12">Research Sources</h3>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-5">
-                                        <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
-                                            We leverage over 20 premier academic resources to ensure rigorous, high-quality research for your assignments.
-                                        </p>
-                                        <div class="flex flex-wrap duration-300 group-hover:opacity-100 group-focus:opacity-100">
-                                            <div class="w-full pr-8">
-                                                <dl class="pt-8 research-sources-list">
-                                                    <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Resources</dt>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">JSTOR</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Turnitin</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">PubMed</dd>
-                                                    <div class="hidden-items">
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Google Scholar</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">EBSCOhost</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">ProQuest</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">ScienceDirect</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">LexisNexis</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Emerald Insight</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">SpringerLink</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Wiley Online Library</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Scopus</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">EconLit</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">IEEE Xplore</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">ACM Digital Library</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Oxford Academic</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Taylor & Francis Online</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Sage Journals</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">HeinOnline</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">WorldCat</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Project MUSE</dd>
-                                                    </div>
-                                                </dl>
-                                                <div class="pt-8">
-                                                    <button class="view-more-btn inline-block outline outline-4 outline-transparent bg-inherit text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-target="research-sources-list">
-                                                        View More
-                                                    </button>
+                    <li class="highlightable-section relative">
+                        <div class="highlightable-overlay"></div>
+                        <div class="inner">
+                            <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
+                                <div class="col-span-12 lg:col-span-7">
+                                    <h3 class="text-3xl lg:pr-12">Research Sources</h3>
+                                </div>
+                                <div class="col-span-12 lg:col-span-5">
+                                    <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
+                                        We leverage over 20 premier academic resources to ensure rigorous, high-quality research for your assignments.
+                                    </p>
+                                    <div class="highlightable-content flex flex-wrap">
+                                        <div class="w-full pr-8">
+                                            <dl class="pt-8 research-sources-list">
+                                                <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Resources</dt>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">JSTOR</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Turnitin</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">PubMed</dd>
+                                                <div class="hidden-items">
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Google Scholar</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">EBSCOhost</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">ProQuest</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">ScienceDirect</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">LexisNexis</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Emerald Insight</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">SpringerLink</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Wiley Online Library</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Scopus</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">EconLit</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">IEEE Xplore</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">ACM Digital Library</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Oxford Academic</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Taylor & Francis Online</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Sage Journals</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">HeinOnline</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">WorldCat</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Project MUSE</dd>
                                                 </div>
+                                            </dl>
+                                            <div class="pt-8">
+                                                <button class="view-more-btn inline-block outline outline-4 outline-transparent bg-inherit text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-target="research-sources-list">
+                                                    View More
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -204,47 +233,45 @@
                             </div>
                         </div>
                     </li>
-                    <li class="relative">
-                        <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-inherit pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
-                            <div class="inner">
-                                <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
-                                    <div class="col-span-12 lg:col-span-7">
-                                        <h3 class="text-3xl lg:pr-12">Tools We Use</h3>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-5">
-                                        <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
-                                            Our team is proficient in 15+ advanced tools required by top business schools, ensuring your work meets their standards.
-                                        </p>
-                                        <div class="flex flex-wrap duration-300 group-hover:opacity-100 group-focus:opacity-100">
-                                            <div class="w-full pr-8">
-                                                <dl class="pt-8 tools-list">
-                                                    <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Tools</dt>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Zotero</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Mendeley</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">EndNote</dd>
-                                                    <div class="hidden-items">
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Grammarly</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Tableau</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">SPSS</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Stata</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">RStudio</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">MATLAB</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">NVivo</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Power BI</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Excel (Advanced)</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Bloomberg Terminal</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">RefWorks</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Overleaf (LaTeX)</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">EViews</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">QuickBooks</dd>
-                                                    </div>
-                                                </dl>
-                                                <div class="pt-8">
-                                                    <button class="view-more-btn inline-block outline outline-4 outline-transparent bg-inherit text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-target="tools-list">
-                                                        View More
-                                                    </button>
+                    <li class="highlightable-section relative">
+                        <div class="highlightable-overlay"></div>
+                        <div class="inner">
+                            <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
+                                <div class="col-span-12 lg:col-span-7">
+                                    <h3 class="text-3xl lg:pr-12">Tools We Use</h3>
+                                </div>
+                                <div class="col-span-12 lg:col-span-5">
+                                    <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
+                                        Our team is proficient in 15+ advanced tools required by top business schools, ensuring your work meets their standards.
+                                    </p>
+                                    <div class="highlightable-content flex flex-wrap">
+                                        <div class="w-full pr-8">
+                                            <dl class="pt-8 tools-list">
+                                                <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Tools</dt>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Zotero</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Mendeley</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">EndNote</dd>
+                                                <div class="hidden-items">
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Grammarly</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Tableau</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">SPSS</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Stata</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">RStudio</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">MATLAB</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">NVivo</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Power BI</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Excel (Advanced)</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Bloomberg Terminal</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">RefWorks</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Overleaf (LaTeX)</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">EViews</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">QuickBooks</dd>
                                                 </div>
+                                            </dl>
+                                            <div class="pt-8">
+                                                <button class="view-more-btn inline-block outline outline-4 outline-transparent bg-inherit text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-target="tools-list">
+                                                    View More
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -252,82 +279,80 @@
                             </div>
                         </div>
                     </li>
-                    <li class="relative">
-                        <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-inherit pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
-                            <div class="inner">
-                                <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
-                                    <div class="col-span-12 lg:col-span-7">
-                                        <h3 class="text-3xl lg:pr-12">Universities Served</h3>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-5">
-                                        <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
-                                            We support scholars at over 50 prestigious institutions worldwide, including Harvard, Yale, and Stanford.
-                                        </p>
-                                        <div class="flex flex-wrap duration-300 group-hover:opacity-100 group-focus:opacity-100">
-                                            <div class="w-full pr-8">
-                                                <dl class="pt-8 universities-list">
-                                                    <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Institutions</dt>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Harvard</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Yale</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Wharton</dd>
-                                                    <div class="hidden-items">
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Stanford</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">MIT</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Columbia</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Oxford</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Cambridge</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Princeton</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">UChicago</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">London Business School</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">INSEAD</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">HEC Paris</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">NYU Stern</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Duke Fuqua</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">IMD</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">NUS Business School</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Alliance Manchester</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Cambridge Judge</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Cornell Johnson</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">UC Berkeley Haas</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Northwestern Kellogg</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">UCLA Anderson</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Michigan Ross</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Dartmouth Tuck</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">UVA Darden</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">UNC Kenan-Flagler</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">USC Marshall</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Texas McCombs</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Emory Goizueta</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Washington Olin</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Georgetown McDonough</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Vanderbilt Owen</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Rice Jones</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Indiana Kelley</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Ohio State Fisher</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Arizona Eller</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Maryland Smith</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Wisconsin School of Business</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Peking University HSBC</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Tsinghua SEM</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Hong Kong UST</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Seoul National University</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Korea University</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Yonsei University</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">IIM Ahmedabad</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">IIM Bangalore</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">University of Toronto Rotman</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Western University Ivey</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">McGill Desautels</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Melbourne Business School</dd>
-                                                        <dd class="type-eyebrow bullet whitespace-nowrap">Sydney Business School</dd>
-                                                    </div>
-                                                </dl>
-                                                <div class="pt-8">
-                                                    <button class="view-more-btn inline-block outline outline-4 outline-transparent bg-inherit text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-target="universities-list">
-                                                        View More
-                                                    </button>
+                    <li class="highlightable-section relative">
+                        <div class="highlightable-overlay"></div>
+                        <div class="inner">
+                            <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
+                                <div class="col-span-12 lg:col-span-7">
+                                    <h3 class="text-3xl lg:pr-12">Universities Served</h3>
+                                </div>
+                                <div class="col-span-12 lg:col-span-5">
+                                    <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
+                                        We support scholars at over 50 prestigious institutions worldwide, including Harvard, Yale, and Stanford.
+                                    </p>
+                                    <div class="highlightable-content flex flex-wrap">
+                                        <div class="w-full pr-8">
+                                            <dl class="pt-8 universities-list">
+                                                <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Institutions</dt>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Harvard</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Yale</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Wharton</dd>
+                                                <div class="hidden-items">
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Stanford</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">MIT</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Columbia</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Oxford</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Cambridge</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Princeton</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">UChicago</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">London Business School</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">INSEAD</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">HEC Paris</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">NYU Stern</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Duke Fuqua</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">IMD</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">NUS Business School</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Alliance Manchester</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Cambridge Judge</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Cornell Johnson</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">UC Berkeley Haas</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Northwestern Kellogg</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">UCLA Anderson</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Michigan Ross</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Dartmouth Tuck</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">UVA Darden</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">UNC Kenan-Flagler</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">USC Marshall</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Texas McCombs</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Emory Goizueta</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Washington Olin</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Georgetown McDonough</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Vanderbilt Owen</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Rice Jones</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Indiana Kelley</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Ohio State Fisher</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Arizona Eller</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Maryland Smith</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Wisconsin School of Business</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Peking University HSBC</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Tsinghua SEM</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Hong Kong UST</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Seoul National University</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Korea University</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Yonsei University</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">IIM Ahmedabad</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">IIM Bangalore</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">University of Toronto Rotman</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Western University Ivey</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">McGill Desautels</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Melbourne Business School</dd>
+                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Sydney Business School</dd>
                                                 </div>
+                                            </dl>
+                                            <div class="pt-8">
+                                                <button class="view-more-btn inline-block outline outline-4 outline-transparent bg-inherit text-[#333] border border-[#333] py-2 px-4 rounded-full duration-300 transition-all hover:bg-opacity-70" data-target="universities-list">
+                                                    View More
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -335,27 +360,25 @@
                             </div>
                         </div>
                     </li>
-                    <li class="relative">
-                        <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-inherit pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
-                            <div class="inner">
-                                <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
-                                    <div class="col-span-12 lg:col-span-7">
-                                        <h3 class="text-3xl lg:pr-12">Payment Systems</h3>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-5">
-                                        <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
-                                            Secure payments via Bitcoin, USDT, and TON.
-                                        </p>
-                                        <div class="flex flex-wrap duration-300 group-hover:opacity-100 group-focus:opacity-100">
-                                            <div class="w-full pr-8">
-                                                <dl class="pt-8">
-                                                    <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Cryptocurrencies</dt>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Bitcoin</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">USDT</dd>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">TON</dd>
-                                                </dl>
-                                            </div>
+                    <li class="highlightable-section relative">
+                        <div class="highlightable-overlay"></div>
+                        <div class="inner">
+                            <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
+                                <div class="col-span-12 lg:col-span-7">
+                                    <h3 class="text-3xl lg:pr-12">Payment Systems</h3>
+                                </div>
+                                <div class="col-span-12 lg:col-span-5">
+                                    <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
+                                        Secure payments via Bitcoin, USDT, and TON.
+                                    </p>
+                                    <div class="highlightable-content flex flex-wrap">
+                                        <div class="w-full pr-8">
+                                            <dl class="pt-8">
+                                                <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Cryptocurrencies</dt>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Bitcoin</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">USDT</dd>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">TON</dd>
+                                            </dl>
                                         </div>
                                     </div>
                                 </div>
@@ -449,50 +472,46 @@
                     <h2 class="type-eyebrow py-4 lg:py-8 opacity-50"><a href="#testimonials">Testimonials</a></h2>
                 </div>
                 <ul class="divide-y divide-[#333]/[0.1]">
-                    <li class="relative">
-                        <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-inherit pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
-                            <div class="inner">
-                                <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
-                                    <div class="col-span-12 lg:col-span-7">
-                                        <h3 class="text-3xl lg:pr-12">Harvard Graduate</h3>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-5">
-                                        <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
-                                            “BRILLANZ delivered a flawless research paper. Truly professional!”
-                                        </p>
-                                        <div class="flex flex-wrap duration-300 group-hover:opacity-100 group-focus:opacity-100">
-                                            <div class="w-full pr-8">
-                                                <dl class="pt-8">
-                                                    <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Client</dt>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Anonymous</dd>
-                                                </dl>
-                                            </div>
+                    <li class="highlightable-section relative">
+                        <div class="highlightable-overlay"></div>
+                        <div class="inner">
+                            <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
+                                <div class="col-span-12 lg:col-span-7">
+                                    <h3 class="text-3xl lg:pr-12">Harvard Graduate</h3>
+                                </div>
+                                <div class="col-span-12 lg:col-span-5">
+                                    <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
+                                        “BRILLANZ delivered a flawless research paper. Truly professional!”
+                                    </p>
+                                    <div class="highlightable-content flex flex-wrap">
+                                        <div class="w-full pr-8">
+                                            <dl class="pt-8">
+                                                <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Client</dt>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Anonymous</dd>
+                                            </dl>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li class="relative">
-                        <div class="group block py-12 lg:py-24 duration-300 opacity-50 hover:opacity-100 focus:opacity-100">
-                            <div class="absolute bg-inherit pointer-events-none top-0 left-0 right-0 bottom-0 scale-y-75 opacity-0 duration-100 group-hover:scale-y-100 group-hover:opacity-10"></div>
-                            <div class="inner">
-                                <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
-                                    <div class="col-span-12 lg:col-span-7">
-                                        <h3 class="text-3xl lg:pr-12">Wharton MBA</h3>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-5">
-                                        <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
-                                            “Their case study was impeccable. Highly recommend!”
-                                        </p>
-                                        <div class="flex flex-wrap duration-300 group-hover:opacity-100 group-focus:opacity-100">
-                                            <div class="w-full pr-8">
-                                                <dl class="pt-8">
-                                                    <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Client</dt>
-                                                    <dd class="type-eyebrow bullet whitespace-nowrap">Anonymous</dd>
-                                                </dl>
-                                            </div>
+                    <li class="highlightable-section relative">
+                        <div class="highlightable-overlay"></div>
+                        <div class="inner">
+                            <div class="grid grid-cols-12 gap-y-2 lg:gap-8">
+                                <div class="col-span-12 lg:col-span-7">
+                                    <h3 class="text-3xl lg:pr-12">Wharton MBA</h3>
+                                </div>
+                                <div class="col-span-12 lg:col-span-5">
+                                    <p class="lg:mt-4 block text-lg font-normal max-w-[650px]">
+                                        “Their case study was impeccable. Highly recommend!”
+                                    </p>
+                                    <div class="highlightable-content flex flex-wrap">
+                                        <div class="w-full pr-8">
+                                            <dl class="pt-8">
+                                                <dt class="type-eyebrow border-b border-black/20 pb-1 mb-2">Client</dt>
+                                                <dd class="type-eyebrow bullet whitespace-nowrap">Anonymous</dd>
+                                            </dl>
                                         </div>
                                     </div>
                                 </div>
@@ -509,7 +528,7 @@
                 </div>
                 <div class="border-b border-opacity-10">
                     <div class="inner">
-                        <h3 class="text-3xl opacity-50 pt-16 pb-8 lgCGI:pb-16">
+                        <h3 class="text-3xl opacity-50 pt-16 pb-8 lg:pb-16">
                             Join our caring team of academic writers.
                         </h3>
                         <div class="grid grid-cols-12 gap-8 pb-16 lg:pb-24">
