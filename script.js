@@ -21,7 +21,7 @@ function changeColor() {
 }
 
 // Change colors every 3 seconds to allow the transition to complete
-setInterval(changeColor, 3000);
+setInterval(changeColor, 10000);
 
 const typewriter = new Typed('.js-typer', {
     strings: [
