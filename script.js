@@ -7,8 +7,8 @@ function changeColor() {
     console.log('Color changed to:', colors[colorIndex]);
 }
 
-// Continuous color change every 5 seconds
-setInterval(changeColor, 5000);
+// Continuous color change every 1 second
+setInterval(changeColor, 1000);
 
 // Fallback for viewport height adjustment
 function adjustContentMargin() {
@@ -19,15 +19,20 @@ function adjustContentMargin() {
 window.addEventListener('load', adjustContentMargin);
 window.addEventListener('resize', adjustContentMargin);
 
-// Typewriter Effect (single string, no loop)
+// Typewriter Effect (looping shorter phrases)
 setTimeout(() => {
     try {
         new Typed('.js-typer', {
-            strings: ['BRILLANZ crafts unparalleled academic solutions for the world’s brightest minds.'],
+            strings: [
+                'Elite academic solutions.',
+                'For top business scholars.',
+                'Turnitin-verified work.',
+                'Secure crypto payments.'
+            ],
             typeSpeed: 50,
             backSpeed: 30,
             backDelay: 2000,
-            loop: false,
+            loop: true,
             showCursor: true,
             cursorChar: '|'
         });
@@ -79,11 +84,4 @@ form.addEventListener('submit', e => {
     const message = encodeURIComponent(`Support Request\nLevel: ${level}\nType: ${type}\nDeadline: ${deadline}\nDetails: ${details}`);
     window.open(`https://t.me/stevebendict?text=${message}`, '_blank');
     form.reset();
-    gtag('event', 'form_submission', { 'form_id': 'support-form' });
 });
-
-// Google Analytics
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
