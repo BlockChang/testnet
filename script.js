@@ -28,7 +28,7 @@ const typewriter = new Typed('.js-typer', {
     ],
     typeSpeed: 30,
     backSpeed: 30,
-    backDelay: 1000,
+    backDelay: 2000,
     startDelay: 500,
     loop: true,
     onStart: () => console.log('Typewriter initialized successfully')
