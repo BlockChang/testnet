@@ -86,7 +86,7 @@ form.addEventListener('submit', (e) => {
 // Intersection Observer for bold text on scroll
 const observerOptions = {
     root: null, // Use the viewport as the root
-    rootMargin: '-20% 0px 0px 0px', // Remove bold when section is 20% from the top
+    rootMargin: '-40% 0px 0px 0px', // Remove bold when section is 20% from the top
     threshold: 0.1 // Trigger when 10% of the section is visible
 };
 
