@@ -22,7 +22,7 @@ setInterval(changeColor, 10000);
 
 const typewriter = new Typed('.js-typer', {
     strings: [
-        'BRILLANZ provides elite business school assignment help.',
+        'We provides elite business school assignment help.',
         '100% original, Turnitin-verified work.',
         'Secure crypto payments.'
     ],
