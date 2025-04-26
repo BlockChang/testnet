@@ -1,11 +1,7 @@
 const colors = [
-    '#f9d1d1', // Pastel Pink
     '#d1e8f9', // Pastel Blue
     '#e2d1f9', // Pastel Purple
-    '#f9f3d1', // Pastel Yellow
     '#d1f9e2', // Pastel Green
-    '#f9e2d1', // Pastel Orange
-    '#d1f9f9'  // Pastel Cyan
 ];
 
 let colorIndex = 0;
