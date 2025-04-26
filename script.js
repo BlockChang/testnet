@@ -11,7 +11,7 @@ function changeColor() {
     document.querySelector('.content-section').style.backgroundColor = newColor;
     document.body.style.setProperty('--current-color', newColor);
     console.log(`Content section color changed to: ${newColor}`);
-    colorIndex = (colorIndex + 1) % colors.length;
+    colorIndex = (colorIndex + 3) % colors.length;
 }
 
 setInterval(changeColor, 10000);
